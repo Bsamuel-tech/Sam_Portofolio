@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Samuel Bizimana</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .projects-page {
+            min-height: 100vh;
+            padding: 40px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-top: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 56px;
+            background: linear-gradient(135deg, #00d4ff, #667eea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            color: var(--text-dim);
+            font-size: 18px;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background: var(--card-bg);
+            border: 1px solid var(--accent);
+            padding: 12px 25px;
+            border-radius: 50px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            background: var(--accent);
+            color: var(--bg);
+            transform: translateX(-5px);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 80px var(--accent-glow);
+            border-color: var(--accent);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-image::after {
+            opacity: 0;
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-category {
+            display: inline-block;
+            padding: 6px 14px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .project-content h3 {
+            font-size: 26px;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .project-content p {
+            color: var(--text-dim);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .project-features {
+            margin-bottom: 20px;
+        }
+
+        .project-features h4 {
+            color: var(--text);
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .project-features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .project-features li {
+            color: var(--text-dim);
+            font-size: 14px;
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .project-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            color: var(--accent);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .project-btn {
+            flex: 1;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .btn-demo {
+            background: var(--accent);
+            color: var(--bg);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-demo:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        .btn-code {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-code:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        .stats-section {
+            margin-top: 60px;
+            padding: 50px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #667eea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: var(--text-dim);
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+
+    <a href="index.html" class="back-button">
+        ← Home
+    </a>
+
+    <div class="projects-page">
+        <div class="page-header">
+            <h1>🚀 Featured Projects</h1>
+            <p>Showcasing my technical expertise through data science and machine learning projects</p>
+        </div>
+
+        <div class="projects-grid">
+            <!-- IPL Data Analysis -->
+            <div class="project-card">
+                <div class="project-image">📊</div>
+                <div class="project-content">
+                    <span class="project-category">Data Analytics</span>
+                    <h3>IPL Data Analysis Dashboard</h3>
+                    <p>
+                        Comprehensive analysis of Indian Premier League datasets with interactive visualizations showcasing player and team performance trends across multiple seasons.
+                    </p>
+                    
+                    <div class="project-features">
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>Interactive Power BI dashboards with dynamic filters</li>
+                            <li>Player performance metrics and comparisons</li>
+                            <li>Team statistics and trend analysis</li>
+                            <li>SQL queries for complex data aggregations</li>
+                            <li>Visual storytelling with meaningful insights</li>
+                        </ul>
+                    </div>
+
+                    <div class="tech-stack">
+                        <span class="tech-tag">Power BI</span>
+                        <span class="tech-tag">SQL Server</span>
+                        <span class="tech-tag">Data Visualization</span>
+                        <span class="tech-tag">DAX</span>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="https://github.com/Bsamuel-tech/FUTURE_DS_02/blob/main/Image.png" class="project-btn btn-demo">View Dashboard</a>
+                        <a href="https://github.com/Bsamuel-tech/FUTURE_DS_02/blob/main/README.md" class="project-btn btn-code">Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loan Approval Prediction -->
+            <div class="project-card">
+                <div class="project-image">🤖</div>
+                <div class="project-content">
+                    <span class="project-category">Machine Learning</span>
+                    <h3>Loan Approval Prediction Model</h3>
+                    <p>
+                        Intelligent machine learning model that predicts loan approval outcomes with high accuracy using classification algorithms and feature engineering techniques.
+                    </p>
+                    
+                    <div class="project-features">
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>Multiple ML algorithms comparison (Random Forest, SVM, Logistic Regression)</li>
+                            <li>Feature engineering and data preprocessing</li>
+                            <li>Model evaluation with cross-validation</li>
+                            <li>Hyperparameter tuning for optimal performance</li>
+                            <li>Confusion matrix and ROC curve analysis</li>
+                        </ul>
+                    </div>
+
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">Machine Learning</span>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="https://github.com/Bsamuel-tech/FUTURE_DS_03/blob/main/README.md" class="project-btn btn-demo">Live Demo</a>
+                        <a href="https://github.com/Bsamuel-tech/FUTURE_DS_03/blob/main/Loan%20pred%20nb.ipynb" class="project-btn btn-code">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Titanic Survival Analysis -->
+            <div class="project-card">
+                <div class="project-image">🚢</div>
+                <div class="project-content">
+                    <span class="project-category">Data Science</span>
+                    <h3>Titanic Survival Rate Analysis</h3>
+                    <p>
+                        Comprehensive exploratory data analysis identifying key factors affecting survival rates, with beautiful visualizations and statistical insights.
+                    </p>
+                    
+                    <div class="project-features">
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>In-depth exploratory data analysis (EDA)</li>
+                            <li>Data cleaning and handling missing values</li>
+                            <li>Statistical analysis of survival factors</li>
+                            <li>Beautiful visualizations with Seaborn and Matplotlib</li>
+                            <li>Correlation analysis and feature importance</li>
+                        </ul>
+                    </div>
+
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">Seaborn</span>
+                        <span class="tech-tag">Matplotlib</span>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="#" class="project-btn btn-demo">View Analysis</a>
+                        <a href="https://github.com/Bsamuel-tech/Future_DS_01/blob/main/FUTURE_DS_O1.ipynb" class="project-btn btn-code">Notebook</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Stats -->
+        <div class="stats-section">
+            <h2 style="font-size: 36px; background: linear-gradient(135deg, #00d4ff, #667eea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px;">
+                📈 Project Impact
+            </h2>
+            <p style="color: var(--text-dim); margin-bottom: 20px;">
+                Numbers that showcase the scope and impact of my work
+            </p>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">3+</div>
+                    <div class="stat-label">Completed Projects</div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Technologies Used</div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Lines of Code</div>
+                </div>
+
+                <div class="stat-item">
+                    <div class="stat-number">85%+</div>
+                    <div class="stat-label">Model Accuracy</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Future Projects Section -->
+        <div style="margin-top: 60px; padding: 50px; background: var(--card-bg); border-radius: 20px; border: 1px solid rgba(0, 212, 255, 0.2); text-align: center;">
+            <h2 style="font-size: 36px; background: linear-gradient(135deg, #00d4ff, #667eea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px;">
+                🔮 Upcoming Projects
+            </h2>
+            <p style="color: var(--text-dim); margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                I'm constantly working on new and exciting projects. Stay tuned for more AI-powered solutions, data visualizations, and innovative applications!
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
+                <span style="padding: 10px 20px; background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 25px; color: var(--accent);">
+                    🧠 Apprentissage automatique pour l’optimisation des cellules solaires organiques
+                </span>
+                <span style="padding: 10px 20px; background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 25px; color: var(--accent);">
+                    📸 Computer Vision App
+                </span>
+                <span style="padding: 10px 20px; background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 25px; color: var(--accent);">
+                    📊 Real-time Dashboard
+                </span>
+                <span style="padding: 10px 20px; background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 25px; color: var(--accent);">
+                    🤝 Recommendation System
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" onclick="toggleTheme()">
+        <span id="theme-icon">🌓</span>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+</body>
+</html>
