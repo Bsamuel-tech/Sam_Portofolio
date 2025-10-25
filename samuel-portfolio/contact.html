@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Samuel Bizimana</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .contact-page {
+            min-height: 100vh;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-top: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 56px;
+            background: linear-gradient(135deg, #00d4ff, #667eea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            color: var(--text-dim);
+            font-size: 18px;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background: var(--card-bg);
+            border: 1px solid var(--accent);
+            padding: 12px 25px;
+            border-radius: 50px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            background: var(--accent);
+            color: var(--bg);
+            transform: translateX(-5px);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .contact-info-section {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .contact-info-section h2 {
+            font-size: 32px;
+            color: var(--accent);
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            background: rgba(0, 212, 255, 0.1);
+            border-color: var(--accent);
+        }
+
+        .contact-icon {
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+
+        .contact-details h4 {
+            color: var(--text);
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .contact-details p {
+            color: var(--text-dim);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .contact-details a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: var(--accent-secondary);
+            text-decoration: underline;
+        }
+
+        .contact-form-section {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .contact-form-section h2 {
+            font-size: 32px;
+            color: var(--accent);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 14px 18px;
+            border-radius: 12px;
+            color: var(--text);
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+            background: rgba(0, 212, 255, 0.08);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #00d4ff, #667eea);
+            border: none;
+            padding: 16px 30px;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 50%;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--bg);
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header h1 {
+                font-size: 36px;
+            }
+
+            .back-button {
+                top: 15px;
+                left: 15px;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">← Back to Home</a>
+
+    <div class="contact-page">
+        <div class="page-header">
+            <h1>Get In Touch</h1>
+            <p>Let's discuss your project or just say hello!</p>
+        </div>
+
+        <div class="contact-container">
+            <!-- Contact Information -->
+            <div class="contact-info-section">
+                <h2>Contact Information</h2>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-details">
+                        <h4>Email</h4>
+                        <p><a href="mailto:bizimanasamuel39@gmail.com">bizimanasamuel39@gmail.com</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div class="contact-details">
+                        <h4>Phone</h4>
+                        <p><a href="tel:+250788523605">+250 788 523 605</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <h4>Location</h4>
+                        <p>Kigali, Rwanda</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">💼</div>
+                    <div class="contact-details">
+                        <h4>LinkedIn</h4>
+                        <p><a href="https://www.linkedin.com/in/samuel-bizimana-b3bb60339" target="_blank">Connect with me</a></p>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://github.com/samuel-bizimana" class="social-link" target="_blank" title="GitHub">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/samuel-bizimana-b3bb60339" class="social-link" target="_blank" title="LinkedIn">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                    <a href="mailto:bizimanasamuel39@gmail.com" class="social-link" title="Email">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-section">
+                <h2>Send a Message</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Your Email *</label>
+                        <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <input type="text" id="subject" name="subject" required placeholder="Project Discussion">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required placeholder="Tell me about your project..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // You can integrate with a backend service or email API here
+            // For now, we'll show a success message
+            alert(`Thank you ${name}! Your message has been received. I'll get back to you soon at ${email}.`);
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.contact-item, .form-group').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

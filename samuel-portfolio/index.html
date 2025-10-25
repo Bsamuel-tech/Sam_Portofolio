@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samuel Bizimana - AI Engineer & Data Scientist</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Handwriting Intro Overlay -->
+    <div class="handwriting-overlay" id="handwritingOverlay">
+        <div class="handwriting-container">
+            <svg class="hand-animation" viewBox="0 0 100 100" width="150" height="150">
+                <g id="hand">
+                    <path d="M50 70 Q45 60, 45 50 L45 30 Q45 25, 50 25 Q55 25, 55 30 L55 50" 
+                          fill="#FFD1A4" stroke="#E0A575" stroke-width="1"/>
+                    <circle cx="50" cy="25" r="3" fill="#E0A575"/>
+                    <line x1="50" y1="70" x2="50" y2="85" stroke="#8B4513" stroke-width="4" stroke-linecap="round"/>
+                </g>
+            </svg>
+            <div class="handwriting-text">
+                <svg id="handwritingSvg" viewBox="0 0 800 200">
+                    <path id="textPath" fill="none" stroke="url(#gradient)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#667eea;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div class="typed-text" id="typedText"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Main Grid Container -->
+    <div class="grid-container" id="mainContent" style="opacity: 0;">
+        <!-- Top Left - Welcome Message -->
+        <div class="grid-item top-left">
+            <div class="welcome-badge">👋 Welcome to my world!</div>
+            <div class="ui-magic-badge">Build Amazing Visuals</div>
+        </div>
+
+        <!-- Top Center - Main Title -->
+        <div class="grid-item top-center">
+            <h1 class="main-title">
+                <span class="title-line">Hello</span>
+                <span class="title-line">I'm <span class="name-highlight">Samuel</span></span>
+                <span class="title-line name-highlight">Bizimana</span>
+            </h1>
+            <p class="subtitle">AI Engineer | Data Scientist | Problem Solver</p>
+            <p class="description">Passionate about leveraging AI 🔬 | ML enthusiast 🤖 | Crafting intelligent solutions and coding the future 💻✨</p>
+            
+            <div class="cta-buttons">
+                <a href="#" class="btn-learn" onclick="scrollToGrid(event)">Learn More</a>
+                <a href="#" class="btn-cv" onclick="requestCV(event)">Get CV</a>
+            </div>
+        </div>
+        <div class="grid-item profile-section">
+            <div class="profile-container">
+                <img src="assets/images/profile.jpg" alt="Samuel Bizimana" class="profile-img" onerror="this.src='https://via.placeholder.com/300x300/667eea/ffffff?text=Samuel+Bizimana'">
+                <div class="profile-glow"></div>
+            </div>
+        </div>
+
+        <!-- Top Right - Code Snippet -->
+        <div class="grid-item top-right">
+            <div class="code-window">
+                <div class="code-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="filename">developer.js</span>
+                </div>
+                <div class="code-content">
+                    <pre><code><span class="keyword">const</span> <span class="variable">profile</span> = {
+  <span class="property">name</span>: <span class="string">'Samuel Bizimana'</span>,
+  <span class="property">title</span>: <span class="string">'AI Engineer | Data Scientist'</span>,
+  <span class="property">skills</span>: [
+    <span class="string">'Python'</span>, <span class="string">'Machine Learning'</span>,
+    <span class="string">'Power BI'</span>, <span class="string">'R'</span>, <span class="string">'C++'</span>
+  ],
+  <span class="property">passion</span>: <span class="string">'AI for Social Good'</span>,
+  <span class="property">hireable</span>: <span class="keyword">true</span>,
+  <span class="function">contact</span>: <span class="keyword">function</span>() {
+    <span class="keyword">return</span> <span class="string">'kabashibizimana@gmail.com'</span>;
+  }
+};</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Grid - Center Section -->
+        <div class="navigation-grid">
+            <div class="nav-card" onclick="navigateTo('skills.html')">
+                <div class="nav-icon">💻</div>
+                <h3>Skills</h3>
+                <p>Explore my technical expertise</p>
+            </div>
+
+            <div class="nav-card" onclick="navigateTo('education.html')">
+                <div class="nav-icon">🎓</div>
+                <h3>Education</h3>
+                <p>My academic journey</p>
+            </div>
+
+            <div class="nav-card" onclick="navigateTo('experience.html')">
+                <div class="nav-icon">💼</div>
+                <h3>Experience</h3>
+                <p>Professional path</p>
+            </div>
+
+            <div class="nav-card" onclick="navigateTo('projects.html')">
+                <div class="nav-icon">🚀</div>
+                <h3>Projects</h3>
+                <p>What I've built</p>
+            </div>
+
+            <div class="nav-card" onclick="navigateTo('contact.html')">
+                <div class="nav-icon">📧</div>
+                <h3>Contact</h3>
+                <p>Let's connect</p>
+            </div>
+        </div>
+
+        <!-- Bottom - Profile Image -->
+        <div class="grid-item profile-section">
+            <div class="profile-container">
+                <img src="assets/images/profile.jpg" alt="Samuel Bizimana" class="profile-img" onerror="this.src='https://via.placeholder.com/300x300/667eea/ffffff?text=Samuel+Bizimana'">
+                <div class="profile-glow"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" onclick="toggleTheme()">
+        <span id="theme-icon">🌓</span>
+    </div>
+
+    <!-- CV Request Modal -->
+    <div class="cv-modal" id="cvModal">
+        <div class="cv-modal-content">
+            <span class="close-modal" onclick="closeCVModal()">&times;</span>
+            <h3>📄 Request CV Access</h3>
+            <p>Please request access to view my CV. I'll grant access within 24 hours!</p>
+            <div class="modal-buttons">
+                <a href="https://drive.google.com/file/d/1qPh7_O-ZteP2InQcDGhweVRwmvFtn_89/view?usp=sharing" target="_blank" class="btn-google-drive" onclick="trackCVRequest()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12.01 1.5c-5.522 0-10 4.478-10 10s4.478 10 10 10 10-4.478 10-10-4.478-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-1-13h2v6h-2v-6zm0 8h2v2h-2v-2z"/>
+                    </svg>
+                    Request Access on Google Drive
+                </a>
+                <button class="btn-close" onclick="closeCVModal()">Cancel</button>
+            </div>
+            <p class="info-text">💡 <strong>How it works:</strong> Click the button above, then click "Request access" on Google Drive. You'll receive an email once I approve your request.</p>
+        </div>
+    </div>
+
+    <script src="js/handwriting.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>
