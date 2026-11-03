@@ -49,6 +49,15 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
 .btn-ghost{padding:.7rem 1.5rem;border:1px solid var(--border2);color:var(--text2);font-size:.875rem;font-weight:500;border-radius:6px;text-decoration:none;transition:border-color .2s,color .2s;display:inline-flex;align-items:center;gap:.4rem}
 .btn-ghost:hover{color:var(--text)}
 
+/* HERO PHOTO */
+.hero-photo-wrap{position:relative;display:flex;align-items:center;justify-content:center}
+.hero-photo-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(79,142,247,.08) 0%,transparent 70%);pointer-events:none}
+.hero-photo-frame{position:relative;width:clamp(220px,28vw,320px);height:clamp(260px,33vw,380px);border-radius:14px;overflow:hidden;border:1px solid var(--border2);box-shadow:0 24px 64px rgba(0,0,0,.45)}
+.hero-photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.hero-photo-badge{position:absolute;bottom:1.25rem;left:50%;transform:translateX(-50%);background:rgba(12,15,20,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--border2);border-radius:8px;padding:.5rem .9rem;white-space:nowrap;display:flex;align-items:center;gap:.5rem}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 3px rgba(74,222,128,.15);flex-shrink:0}
+.badge-text{font-family:var(--mono);font-size:.68rem;color:var(--text2);letter-spacing:.03em}
+
 /* PIPELINE */
 .pipeline-container{padding:2rem}
 .pipeline-canvas{width:100%}
@@ -143,8 +152,13 @@ footer{border-top:1px solid var(--border);padding:1.75rem clamp(1.5rem,5vw,3rem)
 
 /* RESPONSIVE */
 @media(max-width:900px){
-  .hero{grid-template-columns:1fr;gap:3rem;padding-top:7rem}
-  .hero-right{display:none}
+  .hero{grid-template-columns:1fr;gap:2.5rem;padding-top:7rem;text-align:center}
+  .hero-left{order:2}
+  .hero-right{order:1;display:flex;justify-content:center}
+  .hero-photo-frame{width:180px;height:216px}
+  .hero-eyebrow{justify-content:center}
+  .hero-stats{justify-content:center}
+  .hero-actions{justify-content:center}
   .nav-links{display:none}
   .project-item{grid-template-columns:1fr;gap:1.5rem}
   .project-right{position:static}
@@ -227,62 +241,17 @@ footer{border-top:1px solid var(--border);padding:1.75rem clamp(1.5rem,5vw,3rem)
     </div>
   </div>
 
-  <div class="hero-right" aria-hidden="true">
-    <div class="pipeline-container">
-      <svg class="pipeline-canvas" viewBox="0 0 380 440" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-            <path d="M1 1L5 3L1 5" fill="none" stroke="#525d70" stroke-width="1.2" stroke-linecap="round"/>
-          </marker>
-          <marker id="arr-a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-            <path d="M1 1L5 3L1 5" fill="none" stroke="#4f8ef7" stroke-width="1.2" stroke-linecap="round"/>
-          </marker>
-        </defs>
-
-        <line x1="190" y1="62" x2="190" y2="90" stroke="#525d70" stroke-width="0.75" marker-end="url(#arr)"/>
-        <line x1="190" y1="152" x2="190" y2="180" stroke="#525d70" stroke-width="0.75" marker-end="url(#arr)"/>
-        <line x1="190" y1="242" x2="190" y2="272" stroke="#4f8ef7" stroke-width="0.75" stroke-dasharray="4 2" marker-end="url(#arr-a)"/>
-        <line x1="190" y1="334" x2="190" y2="362" stroke="#4f8ef7" stroke-width="0.75" stroke-dasharray="4 2" marker-end="url(#arr-a)"/>
-
-        <g>
-          <rect x="80" y="14" width="220" height="48" rx="8" fill="#1a2130" stroke="rgba(255,255,255,0.09)" stroke-width="0.5"/>
-          <text x="190" y="33" text-anchor="middle" style="fill:#525d70;font-size:9px;letter-spacing:.1em;font-family:monospace">INPUT</text>
-          <text x="190" y="50" text-anchor="middle" style="fill:#8892a4;font-size:12px;font-weight:500;font-family:monospace">42,377 ESS records</text>
-        </g>
-
-        <g>
-          <rect x="80" y="92" width="220" height="60" rx="8" fill="#1a2130" stroke="rgba(255,255,255,0.09)" stroke-width="0.5"/>
-          <text x="190" y="111" text-anchor="middle" style="fill:#525d70;font-size:9px;letter-spacing:.1em;font-family:monospace">PREPROCESSING</text>
-          <text x="190" y="130" text-anchor="middle" style="fill:#8892a4;font-size:11.5px;font-weight:500;font-family:monospace">cleaning · feature eng.</text>
-          <text x="190" y="146" text-anchor="middle" style="fill:#525d70;font-size:9.5px;font-family:monospace">R · Python · Pandas</text>
-        </g>
-
-        <g>
-          <rect x="80" y="182" width="220" height="60" rx="8" fill="#151d2c" stroke="rgba(79,142,247,0.22)" stroke-width="0.5"/>
-          <text x="190" y="201" text-anchor="middle" style="fill:#4f8ef7;font-size:9px;letter-spacing:.1em;font-family:monospace">MODEL</text>
-          <text x="190" y="220" text-anchor="middle" style="fill:#e8eaf0;font-size:11.5px;font-weight:600;font-family:monospace">Random Forest (n=500)</text>
-          <text x="190" y="236" text-anchor="middle" style="fill:#7eaafb;font-size:9.5px;font-family:monospace">Scikit-learn · R caret</text>
-        </g>
-
-        <g>
-          <rect x="80" y="274" width="220" height="60" rx="8" fill="#151d2c" stroke="rgba(79,142,247,0.27)" stroke-width="0.5"/>
-          <text x="190" y="293" text-anchor="middle" style="fill:#4f8ef7;font-size:9px;letter-spacing:.1em;font-family:monospace">EXPLAINABILITY</text>
-          <text x="190" y="312" text-anchor="middle" style="fill:#e8eaf0;font-size:11.5px;font-weight:600;font-family:monospace">MOC counterfactuals</text>
-          <text x="190" y="328" text-anchor="middle" style="fill:#7eaafb;font-size:9.5px;font-family:monospace">DiCE · SHAP · iml</text>
-        </g>
-
-        <g>
-          <rect x="80" y="364" width="220" height="56" rx="8" fill="#151d2c" stroke="rgba(79,142,247,0.32)" stroke-width="0.5"/>
-          <text x="190" y="383" text-anchor="middle" style="fill:#4f8ef7;font-size:9px;letter-spacing:.1em;font-family:monospace">PRODUCTION</text>
-          <text x="190" y="402" text-anchor="middle" style="fill:#e8eaf0;font-size:11.5px;font-weight:600;font-family:monospace">REST API · Docker · AWS</text>
-          <text x="190" y="414" text-anchor="middle" style="fill:#7eaafb;font-size:9.5px;font-family:monospace">R Plumber · React UI</text>
-        </g>
-
-        <circle id="p1" r="2.5" fill="#4f8ef7" opacity="0" cx="190" cy="70"/>
-        <circle id="p2" r="2.5" fill="#4f8ef7" opacity="0" cx="190" cy="162"/>
-        <circle id="p3" r="2.5" fill="#4f8ef7" opacity="0" cx="190" cy="252"/>
-        <circle id="p4" r="2.5" fill="#4f8ef7" opacity="0" cx="190" cy="344"/>
-      </svg>
+  <div class="hero-right reveal">
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-bg"></div>
+      <div class="hero-photo-frame">
+        <img src="assets/samuel-photo.png" alt="Samuel Bizimana" loading="eager">
+        <div class="hero-photo-badge">
+          <span class="badge-dot"></span>
+          <span class="badge-text" data-en>Open to stage fin d'etudes</span>
+          <span class="badge-text" data-fr>Disponible fin fevr. 2027</span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -441,7 +410,45 @@ footer{border-top:1px solid var(--border);padding:1.75rem clamp(1.5rem,5vw,3rem)
 
     <div class="project-item reveal">
       <div>
-        <p class="project-number">04 / OpenXAI</p>
+        <p class="project-number" data-en>04 / Agentic AI</p>
+        <p class="project-number" data-fr>04 / IA Agentique</p>
+        <h3 class="project-title" data-en>AAP Grant Intelligence Agent</h3>
+        <h3 class="project-title" data-fr>Agent IA de Veille AAP</h3>
+        <p class="project-subtitle">YES Project n°4036 · JUNIA · Fondation de la Catho de Lille</p>
+        <div class="project-metrics">
+          <div class="metric"><span class="metric-val">LangChain</span><span class="metric-key" data-en>orchestration</span><span class="metric-key" data-fr>orchestration</span></div>
+          <div class="metric"><span class="metric-val">Claude</span><span class="metric-key" data-en>API backbone</span><span class="metric-key" data-fr>API principale</span></div>
+          <div class="metric"><span class="metric-val">Oct 2026</span><span class="metric-key" data-en>present</span><span class="metric-key" data-fr>en cours</span></div>
+        </div>
+        <p class="project-body" data-en>An agentic AI system that monitors open grant calls (AAP), extracts structured fields from unstructured funding documents, evaluates eligibility against institutional research profiles, and generates draft application sections. Built for the Fondation de la Catho de Lille through JUNIA's YES Project program.</p>
+        <p class="project-body" data-fr>Systeme IA agentique qui surveille les appels a projets (AAP), extrait les champs structures de documents de financement non structures, evalue l'eligibilite selon les profils de recherche institutionnels, et genere des brouillons de candidature. Developpe pour la Fondation de la Catho de Lille dans le cadre du programme YES Project de JUNIA.</p>
+        <div class="project-tags">
+          <span class="tag">Python</span><span class="tag">LangChain</span><span class="tag">Claude API</span><span class="tag">RAG</span><span class="tag">NLP</span><span class="tag">Agentic AI</span>
+        </div>
+      </div>
+      <div class="project-right">
+        <div class="project-visual">
+          <svg width="100%" viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+            <defs><marker id="a5" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M1 1L4 2.5L1 4" fill="none" stroke="#4f8ef7" stroke-width="1" stroke-linecap="round"/></marker></defs>
+            <rect x="20" y="10" width="180" height="26" rx="5" fill="#1a2130" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+            <text x="110" y="27" text-anchor="middle" style="fill:#8892a4;font-size:9.5px;font-family:monospace">AAP funding documents</text>
+            <line x1="110" y1="36" x2="110" y2="48" stroke="#525d70" stroke-width="0.75" marker-end="url(#a5)"/>
+            <rect x="20" y="50" width="180" height="26" rx="5" fill="#1a2130" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+            <text x="110" y="67" text-anchor="middle" style="fill:#8892a4;font-size:9.5px;font-family:monospace">Extract + structure fields</text>
+            <line x1="110" y1="76" x2="110" y2="88" stroke="#525d70" stroke-width="0.75" marker-end="url(#a5)"/>
+            <rect x="20" y="90" width="180" height="26" rx="5" fill="#151d2c" stroke="rgba(79,142,247,0.22)" stroke-width="0.5"/>
+            <text x="110" y="107" text-anchor="middle" style="fill:#7eaafb;font-size:9.5px;font-family:monospace">Eligibility analysis · RAG</text>
+            <line x1="110" y1="116" x2="110" y2="128" stroke="#4f8ef7" stroke-width="0.75" stroke-dasharray="3 2" marker-end="url(#a5)"/>
+            <rect x="20" y="130" width="180" height="26" rx="5" fill="#151d2c" stroke="rgba(79,142,247,0.3)" stroke-width="0.5"/>
+            <text x="110" y="147" text-anchor="middle" style="fill:#e8eaf0;font-size:9.5px;font-weight:600;font-family:monospace">Draft generation · Claude API</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-item reveal">
+      <div>
+        <p class="project-number">05 / OpenXAI</p>
         <h3 class="project-title">OpenXAI Lab</h3>
         <p class="project-subtitle" data-en>Open-source XAI benchmarking framework</p>
         <p class="project-subtitle" data-fr>Framework open-source de benchmarking XAI</p>
@@ -522,6 +529,20 @@ footer{border-top:1px solid var(--border);padding:1.75rem clamp(1.5rem,5vw,3rem)
         <li data-fr>Conception d'un pipeline ML causal sur les proprietes HOMO/LUMO de pres de 10 000 molecules organiques.</li>
         <li data-en>Using Double Machine Learning and Causal Forests (grf) with xTB DFT validation. Targeting Nature Machine Intelligence.</li>
         <li data-fr>DoubleML, Causal Forests (grf), validation DFT xTB. Soumission cible : Nature Machine Intelligence.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-meta">
+        <span class="timeline-role" data-en>AI Project - Agentic Grant Intelligence</span>
+        <span class="timeline-role" data-fr>Projet IA - Agent de Veille AAP</span>
+        <span class="timeline-date">Oct 2026 - Present</span>
+      </div>
+      <p class="timeline-org">YES Project n°4036 · JUNIA · Fondation de la Catho de Lille</p>
+      <ul class="timeline-bullets">
+        <li data-en>Building an agentic AI system to monitor funding calls (AAP), extract structured data, assess eligibility, and generate application drafts using LangChain and the Claude API.</li>
+        <li data-fr>Developpement d'un systeme IA agentique pour surveiller les appels a projets, extraire des donnees structurees, evaluer l'eligibilite et generer des brouillons de candidature avec LangChain et l'API Claude.</li>
       </ul>
     </div>
 
@@ -644,6 +665,11 @@ footer{border-top:1px solid var(--border);padding:1.75rem clamp(1.5rem,5vw,3rem)
           <span class="skill-items"><strong>Python</strong> · <strong>R</strong> · C++ · SQL · JavaScript · REST APIs</span>
         </div>
         <div class="skill-row reveal">
+          <span class="skill-category" data-en>Agentic AI</span>
+          <span class="skill-category" data-fr>IA Agentique</span>
+          <span class="skill-items"><strong>LangChain</strong> · Claude API · RAG · Tool Use · Prompt Engineering</span>
+        </div>
+        <div class="skill-row reveal">
           <span class="skill-category" data-en>Deployment</span>
           <span class="skill-category" data-fr>Deploiement</span>
           <span class="skill-items"><strong>Docker</strong> · AWS ECS · CI/CD · FastAPI · R Plumber · GitHub Actions</span>
@@ -707,8 +733,8 @@ footer{border-top:1px solid var(--border);padding:1.75rem clamp(1.5rem,5vw,3rem)
   <div class="contact-wrap">
     <h2 class="contact-headline reveal" data-en>Let's build something meaningful.</h2>
     <h2 class="contact-headline reveal" data-fr>Construisons quelque chose qui compte.</h2>
-    <p class="contact-sub reveal" data-en>I am looking for a work-study contract (alternance) starting September 2026. Open to roles in AI engineering, explainable AI, causal ML, and applied research in France.</p>
-    <p class="contact-sub reveal" data-fr>Je recherche un contrat en alternance a partir de septembre 2026. Ouvert aux missions en ingenierie IA, IA explicable, ML causal et recherche appliquee en France.</p>
+    <p class="contact-sub reveal" data-en>I am looking for a stage de fin d'etudes, available from late February 2027. Open to roles in AI engineering, explainable AI, causal ML, agentic systems, and applied research in France.</p>
+    <p class="contact-sub reveal" data-fr>Je recherche un stage de fin d'etudes, disponible fin fevrier 2027. Ouvert aux missions en ingenierie IA, IA explicable, ML causal, systemes agentiques et recherche appliquee en France.</p>
     <div class="contact-links reveal">
       <a href="mailto:samuel.bizimana@student.junia.com" class="contact-link">
         <span class="contact-link-icon">&#9993;</span>
@@ -758,32 +784,6 @@ const io=new IntersectionObserver((entries)=>{
 },{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches){
-  const ps=[
-    {el:document.getElementById('p1'),y0:70,y1:90},
-    {el:document.getElementById('p2'),y0:162,y1:180},
-    {el:document.getElementById('p3'),y0:254,y1:272},
-    {el:document.getElementById('p4'),y0:344,y1:362}
-  ];
-  let f=0;const C=300;
-  function anim(){
-    f=(f+1)%C;
-    const t=f/C;
-    ps.forEach((p,i)=>{
-      if(!p.el)return;
-      const ph=(t+i*0.25)%1;
-      if(ph<0.28){
-        const pr=ph/0.28;
-        p.el.setAttribute('cy',p.y0+(p.y1-p.y0)*pr);
-        p.el.setAttribute('opacity',Math.min(pr*4,0.85));
-      }else{
-        p.el.setAttribute('opacity','0');
-      }
-    });
-    requestAnimationFrame(anim);
-  }
-  anim();
-}
 </script>
 </body>
 </html>
