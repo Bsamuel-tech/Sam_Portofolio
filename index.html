@@ -1,171 +1,789 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samuel Bizimana - AI Engineer & Data Scientist</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Samuel Bizimana - AI Engineer specializing in Explainable AI, Causal Machine Learning, and production AI systems.">
+<meta property="og:title" content="Samuel Bizimana | AI Engineer · Machine Learning · Research">
+<meta property="og:description" content="AI Engineering student at JUNIA-ISEN building explainable AI systems and causal ML pipelines in production.">
+<title>Samuel Bizimana | AI Engineer · Machine Learning · Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0f14;--bg2:#111620;--bg3:#161c28;--surface:#1a2130;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.12);--text:#e8eaf0;--text2:#8892a4;--text3:#525d70;--accent:#4f8ef7;--accent2:#7eaafb;--accent-dim:rgba(79,142,247,0.1);--sans:'Inter',system-ui,sans-serif;--mono:'JetBrains Mono',monospace;--ease:cubic-bezier(0.4,0,0.2,1)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+.nav{position:fixed;top:0;width:100%;z-index:100;padding:0 clamp(1.5rem,5vw,3rem);height:62px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid transparent;transition:border-color .3s var(--ease),background .3s var(--ease)}
+.nav.scrolled{background:rgba(12,15,20,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-color:var(--border)}
+.nav-logo{font-family:var(--mono);font-size:.875rem;color:var(--text2);text-decoration:none;letter-spacing:.02em}
+.nav-logo span{color:var(--text)}
+.nav-right{display:flex;align-items:center;gap:2rem}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.8125rem;font-weight:500;color:var(--text2);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.lang-switch{display:flex;background:var(--bg3);border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.lang-btn{padding:.3rem .65rem;font-size:.75rem;font-weight:500;font-family:var(--mono);color:var(--text3);background:none;border:none;cursor:pointer;transition:color .2s,background .2s}
+.lang-btn.active{color:var(--accent);background:var(--accent-dim)}
+.nav-cv{font-size:.8125rem;font-weight:500;padding:.45rem 1.1rem;border:1px solid var(--border2);border-radius:6px;color:var(--text);text-decoration:none;transition:border-color .2s,color .2s,background .2s}
+.nav-cv:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-dim)}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4rem;padding:6rem clamp(1.5rem,5vw,3rem) 4rem;max-width:1200px;margin:0 auto}
+.hero-eyebrow{font-family:var(--mono);font-size:.75rem;font-weight:500;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.25rem;display:flex;align-items:center;gap:.75rem}
+.hero-eyebrow::before{content:'';display:block;width:2rem;height:1px;background:var(--accent)}
+.hero-name{font-size:clamp(2.75rem,4.5vw,4rem);font-weight:600;letter-spacing:-.03em;line-height:1.05;margin-bottom:.5rem}
+.hero-title{font-size:clamp(.95rem,1.5vw,1.05rem);color:var(--text2);margin-bottom:1.75rem;letter-spacing:.01em}
+.hero-title span{color:var(--text3);margin:0 .4rem}
+.hero-bio{font-size:1rem;color:var(--text2);line-height:1.75;max-width:520px;margin-bottom:2.5rem}
+.hero-stats{display:flex;gap:2.5rem;margin-bottom:2.5rem;padding:1.25rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stat-num{font-family:var(--mono);font-size:1.5rem;font-weight:500;color:var(--text);letter-spacing:-.02em}
+.stat-num sup{font-size:.875rem;color:var(--accent)}
+.stat-label{font-size:.75rem;color:var(--text3);margin-top:.15rem}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{padding:.7rem 1.5rem;background:var(--accent);color:#fff;font-size:.875rem;font-weight:500;border-radius:6px;text-decoration:none;transition:background .2s,transform .15s;display:inline-flex;align-items:center;gap:.4rem}
+.btn-primary:hover{background:#3a7df5;transform:translateY(-1px)}
+.btn-ghost{padding:.7rem 1.5rem;border:1px solid var(--border2);color:var(--text2);font-size:.875rem;font-weight:500;border-radius:6px;text-decoration:none;transition:border-color .2s,color .2s;display:inline-flex;align-items:center;gap:.4rem}
+.btn-ghost:hover{color:var(--text)}
+
+/* PIPELINE */
+.pipeline-container{padding:2rem}
+.pipeline-canvas{width:100%}
+.node-group{cursor:pointer}
+.flow-particle{fill:var(--accent)}
+
+/* SECTIONS */
+.section-wrap{max-width:1100px;margin:0 auto;padding:6rem clamp(1.5rem,5vw,3rem);border-top:1px solid var(--border)}
+.section-header{display:flex;align-items:baseline;gap:1.5rem;margin-bottom:3.5rem;flex-wrap:wrap}
+.section-label{font-family:var(--mono);font-size:.7rem;font-weight:500;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.section-title{font-size:clamp(1.5rem,2.5vw,2rem);font-weight:600;letter-spacing:-.025em}
+.section-line{flex:1;height:1px;background:var(--border);min-width:2rem}
+
+/* PROJECTS */
+.project-list{display:flex;flex-direction:column}
+.project-item{display:grid;grid-template-columns:3fr 2fr;gap:3rem;align-items:start;padding:2.5rem 0;border-bottom:1px solid var(--border)}
+.project-item:last-child{border-bottom:none}
+.project-number{font-family:var(--mono);font-size:.7rem;color:var(--text3);margin-bottom:.75rem;letter-spacing:.05em}
+.project-title{font-size:1.2rem;font-weight:600;letter-spacing:-.02em;margin-bottom:.5rem;color:var(--text)}
+.project-subtitle{font-size:.875rem;color:var(--accent2);margin-bottom:1rem}
+.project-metrics{display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:1.25rem}
+.metric{display:flex;flex-direction:column;padding:.6rem 1rem;background:var(--bg3);border:1px solid var(--border);border-radius:6px}
+.metric-val{font-family:var(--mono);font-size:1rem;font-weight:500;color:var(--text)}
+.metric-key{font-size:.7rem;color:var(--text3);margin-top:.1rem}
+.project-body{font-size:.9375rem;color:var(--text2);line-height:1.7;margin-bottom:1.25rem}
+.project-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.tag{font-family:var(--mono);font-size:.7rem;padding:.2rem .55rem;background:var(--bg3);border:1px solid var(--border);border-radius:4px;color:var(--text3)}
+.project-right{position:sticky;top:5rem}
+.project-visual{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.5rem;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center}
+.project-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.8125rem;color:var(--accent);text-decoration:none;margin-top:1rem;transition:gap .2s}
+.project-link:hover{gap:.65rem}
+
+/* TIMELINE */
+.timeline{position:relative}
+.timeline::before{content:'';position:absolute;left:0;top:8px;width:1px;bottom:0;background:var(--border)}
+.timeline-item{padding-left:2rem;padding-bottom:2.5rem;position:relative}
+.timeline-item:last-child{padding-bottom:0}
+.timeline-dot{position:absolute;left:-3.5px;top:8px;width:8px;height:8px;border-radius:50%;background:var(--bg3);border:1px solid var(--border2)}
+.timeline-item:first-child .timeline-dot{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 3px rgba(79,142,247,.15)}
+.timeline-meta{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:.5rem;margin-bottom:.35rem}
+.timeline-role{font-size:1rem;font-weight:600;color:var(--text)}
+.timeline-date{font-family:var(--mono);font-size:.7rem;color:var(--text3)}
+.timeline-org{font-size:.875rem;color:var(--accent2);margin-bottom:.75rem}
+.timeline-bullets{list-style:none}
+.timeline-bullets li{font-size:.875rem;color:var(--text2);padding-left:1.1rem;position:relative;margin-bottom:.35rem;line-height:1.65}
+.timeline-bullets li::before{content:'-';position:absolute;left:0;color:var(--text3)}
+
+/* RESEARCH */
+.research-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.research-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.75rem}
+.research-tag{font-family:var(--mono);font-size:.68rem;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;display:block}
+.research-title{font-size:1rem;font-weight:600;margin-bottom:.6rem;color:var(--text);letter-spacing:-.01em}
+.research-body{font-size:.875rem;color:var(--text2);line-height:1.65}
+
+/* SKILLS */
+.skills-taxonomy{display:flex;flex-direction:column;gap:1.5rem}
+.skill-row{display:grid;grid-template-columns:200px 1fr;gap:2rem;align-items:baseline;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.skill-row:last-child{border-bottom:none}
+.skill-category{font-family:var(--mono);font-size:.75rem;font-weight:500;color:var(--text3);letter-spacing:.04em;text-transform:uppercase}
+.skill-items{font-size:.9375rem;color:var(--text2);line-height:1.5}
+.skill-items strong{color:var(--text);font-weight:500}
+
+/* ABOUT ASIDE */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.about-aside{display:flex;flex-direction:column;gap:1.75rem}
+.aside-label{font-family:var(--mono);font-size:.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem}
+.lang-list{display:flex;flex-direction:column;gap:.4rem}
+.lang-item{display:flex;justify-content:space-between;font-size:.875rem;color:var(--text2)}
+.lang-level{color:var(--text3);font-size:.8125rem}
+.cert-list{display:flex;flex-direction:column;gap:.35rem}
+.cert-item{font-size:.875rem;color:var(--text2)}
+.edu-block{margin-bottom:1rem}
+.edu-degree{font-size:.9375rem;font-weight:600;color:var(--text);margin-bottom:.2rem}
+.edu-school{font-size:.8125rem;color:var(--accent2);margin-bottom:.15rem}
+.edu-date{font-family:var(--mono);font-size:.7rem;color:var(--text3)}
+
+/* CONTACT */
+.contact-wrap{max-width:680px}
+.contact-headline{font-size:clamp(1.75rem,3vw,2.5rem);font-weight:600;letter-spacing:-.03em;margin-bottom:1rem}
+.contact-sub{font-size:1rem;color:var(--text2);line-height:1.7;margin-bottom:2.5rem}
+.contact-links{display:flex;flex-direction:column;gap:.75rem}
+.contact-link{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;background:var(--bg2);border:1px solid var(--border);border-radius:8px;text-decoration:none;color:var(--text2);font-size:.875rem;transition:border-color .2s,color .2s,background .2s}
+.contact-link:hover{border-color:var(--border2);color:var(--text);background:var(--bg3)}
+.contact-link-icon{font-size:.95rem;opacity:.5;flex-shrink:0}
+
+footer{border-top:1px solid var(--border);padding:1.75rem clamp(1.5rem,5vw,3rem);display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:.7rem;color:var(--text3);flex-wrap:wrap;gap:.5rem}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;gap:3rem;padding-top:7rem}
+  .hero-right{display:none}
+  .nav-links{display:none}
+  .project-item{grid-template-columns:1fr;gap:1.5rem}
+  .project-right{position:static}
+  .research-grid{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr;gap:2.5rem}
+  .skill-row{grid-template-columns:1fr;gap:.5rem}
+}
+@media(max-width:600px){.hero-stats{gap:1.5rem}footer{flex-direction:column;text-align:center}}
+
+/* LANG */
+[data-lang="fr"] [data-en]{display:none}
+[data-lang="en"] [data-fr]{display:none}
+[data-lang="fr"] [data-fr]{display:revert}
+[data-lang="en"] [data-en]{display:revert}
+</style>
 </head>
 <body>
-    <!-- Handwriting Intro Overlay -->
-    <div class="handwriting-overlay" id="handwritingOverlay">
-        <div class="handwriting-container">
-            <svg class="hand-animation" viewBox="0 0 100 100" width="150" height="150">
-                <g id="hand">
-                    <path d="M50 70 Q45 60, 45 50 L45 30 Q45 25, 50 25 Q55 25, 55 30 L55 50" 
-                          fill="#FFD1A4" stroke="#E0A575" stroke-width="1"/>
-                    <circle cx="50" cy="25" r="3" fill="#E0A575"/>
-                    <line x1="50" y1="70" x2="50" y2="85" stroke="#8B4513" stroke-width="4" stroke-linecap="round"/>
-                </g>
-            </svg>
-            <div class="handwriting-text">
-                <svg id="handwritingSvg" viewBox="0 0 800 200">
-                    <path id="textPath" fill="none" stroke="url(#gradient)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                    <defs>
-                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#667eea;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                </svg>
-                <div class="typed-text" id="typedText"></div>
-            </div>
+
+<nav class="nav" id="nav" aria-label="Main navigation">
+  <a href="#" class="nav-logo"><span>Samuel</span> Bizimana</a>
+  <div class="nav-right">
+    <ul class="nav-links" role="list">
+      <li><a href="#work" data-en>Work</a><a href="#work" data-fr>Projets</a></li>
+      <li><a href="#experience" data-en>Experience</a><a href="#experience" data-fr>Experience</a></li>
+      <li><a href="#research" data-en>Research</a><a href="#research" data-fr>Recherche</a></li>
+      <li><a href="#about" data-en>About</a><a href="#about" data-fr>A propos</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="lang-switch" role="group" aria-label="Language selector">
+      <button class="lang-btn active" onclick="setLang('en')" id="btn-en" aria-pressed="true">EN</button>
+      <button class="lang-btn" onclick="setLang('fr')" id="btn-fr" aria-pressed="false">FR</button>
+    </div>
+    <a href="https://www.linkedin.com/in/samuel-bizimana/" target="_blank" rel="noopener" class="nav-cv">CV</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section aria-label="Introduction">
+<div class="hero">
+  <div class="hero-left reveal">
+    <p class="hero-eyebrow">
+      <span data-en>AI Engineer</span>
+      <span data-fr>Ingenieur IA</span>
+    </p>
+    <h1 class="hero-name">Samuel<br>Bizimana</h1>
+    <p class="hero-title">
+      <span data-en>Machine Learning <span>·</span> Explainable AI <span>·</span> Causal Inference</span>
+      <span data-fr>Machine Learning <span>·</span> IA Explicable <span>·</span> Inference Causale</span>
+    </p>
+    <p class="hero-bio">
+      <span data-en>I build AI systems that explain their decisions and run in production. Currently researching causal ML at CNRS and engineering explainable AI for cardiovascular risk at JGU University, Mainz.</span>
+      <span data-fr>Je concois des systemes IA qui expliquent leurs decisions et fonctionnent en production. Chercheur en ML causal au CNRS et ingenieur IA explicable pour le risque cardiovasculaire a la JGU University, Mainz.</span>
+    </p>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">42,377<sup>+</sup></div>
+        <div class="stat-label" data-en>patient records</div>
+        <div class="stat-label" data-fr>donnees patients</div>
+      </div>
+      <div>
+        <div class="stat-num">92<sup>%</sup></div>
+        <div class="stat-label" data-en>CNN accuracy</div>
+        <div class="stat-label" data-fr>precision CNN</div>
+      </div>
+      <div>
+        <div class="stat-num">~10K</div>
+        <div class="stat-label" data-en>molecules modeled</div>
+        <div class="stat-label" data-fr>molecules modelisees</div>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <a href="#work" class="btn-primary">
+        <span data-en>Explore my work</span>
+        <span data-fr>Voir mes projets</span>
+      </a>
+      <a href="#contact" class="btn-ghost">
+        <span data-en>Get in touch</span>
+        <span data-fr>Me contacter</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right" aria-hidden="true">
+    <div class="pipeline-container">
+      <svg class="pipeline-canvas" viewBox="0 0 380 440" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M1 1L5 3L1 5" fill="none" stroke="#525d70" stroke-width="1.2" stroke-linecap="round"/>
+          </marker>
+          <marker id="arr-a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M1 1L5 3L1 5" fill="none" stroke="#4f8ef7" stroke-width="1.2" stroke-linecap="round"/>
+          </marker>
+        </defs>
+
+        <line x1="190" y1="62" x2="190" y2="90" stroke="#525d70" stroke-width="0.75" marker-end="url(#arr)"/>
+        <line x1="190" y1="152" x2="190" y2="180" stroke="#525d70" stroke-width="0.75" marker-end="url(#arr)"/>
+        <line x1="190" y1="242" x2="190" y2="272" stroke="#4f8ef7" stroke-width="0.75" stroke-dasharray="4 2" marker-end="url(#arr-a)"/>
+        <line x1="190" y1="334" x2="190" y2="362" stroke="#4f8ef7" stroke-width="0.75" stroke-dasharray="4 2" marker-end="url(#arr-a)"/>
+
+        <g>
+          <rect x="80" y="14" width="220" height="48" rx="8" fill="#1a2130" stroke="rgba(255,255,255,0.09)" stroke-width="0.5"/>
+          <text x="190" y="33" text-anchor="middle" style="fill:#525d70;font-size:9px;letter-spacing:.1em;font-family:monospace">INPUT</text>
+          <text x="190" y="50" text-anchor="middle" style="fill:#8892a4;font-size:12px;font-weight:500;font-family:monospace">42,377 ESS records</text>
+        </g>
+
+        <g>
+          <rect x="80" y="92" width="220" height="60" rx="8" fill="#1a2130" stroke="rgba(255,255,255,0.09)" stroke-width="0.5"/>
+          <text x="190" y="111" text-anchor="middle" style="fill:#525d70;font-size:9px;letter-spacing:.1em;font-family:monospace">PREPROCESSING</text>
+          <text x="190" y="130" text-anchor="middle" style="fill:#8892a4;font-size:11.5px;font-weight:500;font-family:monospace">cleaning · feature eng.</text>
+          <text x="190" y="146" text-anchor="middle" style="fill:#525d70;font-size:9.5px;font-family:monospace">R · Python · Pandas</text>
+        </g>
+
+        <g>
+          <rect x="80" y="182" width="220" height="60" rx="8" fill="#151d2c" stroke="rgba(79,142,247,0.22)" stroke-width="0.5"/>
+          <text x="190" y="201" text-anchor="middle" style="fill:#4f8ef7;font-size:9px;letter-spacing:.1em;font-family:monospace">MODEL</text>
+          <text x="190" y="220" text-anchor="middle" style="fill:#e8eaf0;font-size:11.5px;font-weight:600;font-family:monospace">Random Forest (n=500)</text>
+          <text x="190" y="236" text-anchor="middle" style="fill:#7eaafb;font-size:9.5px;font-family:monospace">Scikit-learn · R caret</text>
+        </g>
+
+        <g>
+          <rect x="80" y="274" width="220" height="60" rx="8" fill="#151d2c" stroke="rgba(79,142,247,0.27)" stroke-width="0.5"/>
+          <text x="190" y="293" text-anchor="middle" style="fill:#4f8ef7;font-size:9px;letter-spacing:.1em;font-family:monospace">EXPLAINABILITY</text>
+          <text x="190" y="312" text-anchor="middle" style="fill:#e8eaf0;font-size:11.5px;font-weight:600;font-family:monospace">MOC counterfactuals</text>
+          <text x="190" y="328" text-anchor="middle" style="fill:#7eaafb;font-size:9.5px;font-family:monospace">DiCE · SHAP · iml</text>
+        </g>
+
+        <g>
+          <rect x="80" y="364" width="220" height="56" rx="8" fill="#151d2c" stroke="rgba(79,142,247,0.32)" stroke-width="0.5"/>
+          <text x="190" y="383" text-anchor="middle" style="fill:#4f8ef7;font-size:9px;letter-spacing:.1em;font-family:monospace">PRODUCTION</text>
+          <text x="190" y="402" text-anchor="middle" style="fill:#e8eaf0;font-size:11.5px;font-weight:600;font-family:monospace">REST API · Docker · AWS</text>
+          <text x="190" y="414" text-anchor="middle" style="fill:#7eaafb;font-size:9.5px;font-family:monospace">R Plumber · React UI</text>
+        </g>
+
+        <circle id="p1" r="2.5" fill="#4f8ef7" opacity="0" cx="190" cy="70"/>
+        <circle id="p2" r="2.5" fill="#4f8ef7" opacity="0" cx="190" cy="162"/>
+        <circle id="p3" r="2.5" fill="#4f8ef7" opacity="0" cx="190" cy="252"/>
+        <circle id="p4" r="2.5" fill="#4f8ef7" opacity="0" cx="190" cy="344"/>
+      </svg>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- WORK -->
+<div id="work" class="section-wrap">
+  <div class="section-header">
+    <span class="section-label" data-en>01 - work</span>
+    <span class="section-label" data-fr>01 - projets</span>
+    <h2 class="section-title" data-en>Featured work</h2>
+    <h2 class="section-title" data-fr>Projets</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="project-list">
+
+    <div class="project-item reveal">
+      <div>
+        <p class="project-number" data-en>01 / Medical AI</p>
+        <p class="project-number" data-fr>01 / IA Medicale</p>
+        <h3 class="project-title" data-en>Cardiovascular Risk Prediction and Explanation</h3>
+        <h3 class="project-title" data-fr>Prediction et Explication du Risque Cardiovasculaire</h3>
+        <p class="project-subtitle">Nightingale Heart Project · JGU University, Mainz</p>
+        <div class="project-metrics">
+          <div class="metric"><span class="metric-val">42,377</span><span class="metric-key" data-en>patient records</span><span class="metric-key" data-fr>donnees patients</span></div>
+          <div class="metric"><span class="metric-val">78%</span><span class="metric-key" data-en>risk reduction (9 cases)</span><span class="metric-key" data-fr>reduction du risque</span></div>
+          <div class="metric"><span class="metric-val">REST</span><span class="metric-key" data-en>API in production</span><span class="metric-key" data-fr>API en production</span></div>
         </div>
+        <p class="project-body" data-en>A cardiovascular risk prediction system trained on 42,377 patients from the European Social Survey. Generates clinically valid counterfactual explanations (MOC algorithm) that tell clinicians not just the predicted risk, but the minimal lifestyle changes needed to reduce it. Deployed as a production REST API with a React frontend and a multi-calculator comparison dashboard (SCORE2, PREVENT, WHO).</p>
+        <p class="project-body" data-fr>Systeme de prediction du risque cardiovasculaire entraine sur 42 377 patients. Genere des explications contrefactuelles cliniquement valides (algorithme MOC) indiquant les modifications minimales de style de vie pour reduire le risque. Deploye comme API REST en production avec un frontend React et un tableau de bord de comparaison multi-calculateurs.</p>
+        <div class="project-tags">
+          <span class="tag">R</span><span class="tag">Python</span><span class="tag">Random Forest</span><span class="tag">MOC</span><span class="tag">DiCE</span><span class="tag">R Plumber</span><span class="tag">React</span><span class="tag">Docker</span><span class="tag">AWS ECS</span>
+        </div>
+      </div>
+      <div class="project-right">
+        <div class="project-visual">
+          <svg width="100%" viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+            <defs><marker id="a2" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M1 1L4 2.5L1 4" fill="none" stroke="#4f8ef7" stroke-width="1" stroke-linecap="round"/></marker></defs>
+            <rect x="10" y="10" width="84" height="34" rx="6" fill="#1a2130" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+            <text x="52" y="24" text-anchor="middle" style="fill:#525d70;font-size:8px;font-family:monospace">INPUT</text>
+            <text x="52" y="37" text-anchor="middle" style="fill:#8892a4;font-size:9.5px;font-family:monospace">Patient data</text>
+            <rect x="126" y="10" width="84" height="34" rx="6" fill="#151d2c" stroke="rgba(79,142,247,0.25)" stroke-width="0.5"/>
+            <text x="168" y="24" text-anchor="middle" style="fill:#4f8ef7;font-size:8px;font-family:monospace">MODEL</text>
+            <text x="168" y="37" text-anchor="middle" style="fill:#e8eaf0;font-size:9.5px;font-weight:600;font-family:monospace">RF (n=500)</text>
+            <line x1="94" y1="27" x2="124" y2="27" stroke="#4f8ef7" stroke-width="0.75" marker-end="url(#a2)"/>
+            <rect x="10" y="68" width="84" height="34" rx="6" fill="#1a2130" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+            <text x="52" y="82" text-anchor="middle" style="fill:#525d70;font-size:8px;font-family:monospace">SCORE</text>
+            <text x="52" y="95" text-anchor="middle" style="fill:#e8eaf0;font-size:9.5px;font-family:monospace">High risk</text>
+            <line x1="168" y1="44" x2="168" y2="60" stroke="#4f8ef7" stroke-width="0.75" stroke-dasharray="3 2"/>
+            <line x1="168" y1="60" x2="52" y2="60" stroke="#4f8ef7" stroke-width="0.75" stroke-dasharray="3 2"/>
+            <line x1="52" y1="60" x2="52" y2="66" stroke="#4f8ef7" stroke-width="0.75" marker-end="url(#a2)"/>
+            <rect x="126" y="68" width="84" height="34" rx="6" fill="#151d2c" stroke="rgba(79,142,247,0.25)" stroke-width="0.5"/>
+            <text x="168" y="82" text-anchor="middle" style="fill:#4f8ef7;font-size:8px;font-family:monospace">XAI</text>
+            <text x="168" y="95" text-anchor="middle" style="fill:#e8eaf0;font-size:9.5px;font-weight:600;font-family:monospace">MOC/DiCE</text>
+            <line x1="94" y1="85" x2="124" y2="85" stroke="#4f8ef7" stroke-width="0.75" marker-end="url(#a2)"/>
+            <rect x="68" y="128" width="84" height="34" rx="6" fill="#151d2c" stroke="rgba(79,142,247,0.3)" stroke-width="0.5"/>
+            <text x="110" y="142" text-anchor="middle" style="fill:#4f8ef7;font-size:8px;font-family:monospace">OUTPUT</text>
+            <text x="110" y="155" text-anchor="middle" style="fill:#7eaafb;font-size:9px;font-family:monospace">Counterfactual</text>
+            <line x1="52" y1="102" x2="52" y2="118" stroke="#4f8ef7" stroke-width="0.75" stroke-dasharray="3 2"/>
+            <line x1="168" y1="102" x2="168" y2="118" stroke="#4f8ef7" stroke-width="0.75" stroke-dasharray="3 2"/>
+            <line x1="52" y1="118" x2="168" y2="118" stroke="#4f8ef7" stroke-width="0.75" stroke-dasharray="3 2"/>
+            <line x1="110" y1="118" x2="110" y2="126" stroke="#4f8ef7" stroke-width="0.75" marker-end="url(#a2)"/>
+          </svg>
+        </div>
+      </div>
     </div>
 
-    <!-- Background Particles -->
-    <div class="particles" id="particles"></div>
-
-    <!-- Main Grid Container -->
-    <div class="grid-container" id="mainContent" style="opacity: 0;">
-        <!-- Top Left - Welcome Message -->
-        <div class="grid-item top-left">
-            <div class="welcome-badge">👋 Welcome to my world!</div>
-            <div class="ui-magic-badge">Build Amazing Visuals</div>
+    <div class="project-item reveal">
+      <div>
+        <p class="project-number" data-en>02 / Causal ML</p>
+        <p class="project-number" data-fr>02 / ML Causal</p>
+        <h3 class="project-title" data-en>Causal ML for Organic Molecular Design</h3>
+        <h3 class="project-title" data-fr>ML Causal pour la Conception Moleculaire</h3>
+        <p class="project-subtitle">IEMN Lab · CNRS UMR 8520</p>
+        <div class="project-metrics">
+          <div class="metric"><span class="metric-val">~10K</span><span class="metric-key" data-en>molecules</span><span class="metric-key" data-fr>molecules</span></div>
+          <div class="metric"><span class="metric-val">HOMO/LUMO</span><span class="metric-key" data-en>target properties</span><span class="metric-key" data-fr>proprietes cibles</span></div>
+          <div class="metric"><span class="metric-val">NMI</span><span class="metric-key" data-en>target journal</span><span class="metric-key" data-fr>revue cible</span></div>
         </div>
-
-        <!-- Top Center - Main Title -->
-        <div class="grid-item top-center">
-            <h1 class="main-title">
-                <span class="title-line">Hello</span>
-                <span class="title-line">I'm <span class="name-highlight">Samuel</span></span>
-                <span class="title-line name-highlight">Bizimana</span>
-            </h1>
-            <p class="subtitle">AI Engineer | Data Scientist | Problem Solver</p>
-            <p class="description">Passionate about leveraging AI 🔬 | ML enthusiast 🤖 | Crafting intelligent solutions and coding the future 💻✨</p>
-            
-            <div class="cta-buttons">
-                <a href="#" class="btn-learn" onclick="scrollToGrid(event)">Learn More</a>
-                <a href="#" class="btn-cv" onclick="requestCV(event)">Get CV</a>
-            </div>
+        <p class="project-body" data-en>A causal inference pipeline estimating true causal effects of electron-withdrawing substituents on HOMO/LUMO energy levels of organic molecules. Using Double Machine Learning and Causal Forests to go beyond correlation. Validated with xTB semi-empirical DFT. Targeting Nature Machine Intelligence.</p>
+        <p class="project-body" data-fr>Pipeline d'inference causale estimant les effets causaux des groupes electronattracteurs sur les niveaux HOMO/LUMO de molecules organiques. DoubleML et Causal Forests pour aller au-dela de la correlation. Valide par DFT xTB. Soumission cible : Nature Machine Intelligence.</p>
+        <div class="project-tags">
+          <span class="tag">R</span><span class="tag">Python</span><span class="tag">DoubleML</span><span class="tag">grf</span><span class="tag">Causal Forests</span><span class="tag">RDKit</span><span class="tag">xTB DFT</span>
         </div>
-        <div class="grid-item profile-section">
-            <div class="profile-container">
-                <img src="assets/images/profile.jpg" alt="Samuel Bizimana" class="profile-img" onerror="this.src='https://via.placeholder.com/300x300/667eea/ffffff?text=Samuel+Bizimana'">
-                <div class="profile-glow"></div>
-            </div>
+        <a href="https://github.com/Bsamuel-tech/opv-causal-ml" target="_blank" rel="noopener" class="project-link">
+          <span data-en>View repository</span><span data-fr>Voir le depot</span> &rarr;
+        </a>
+      </div>
+      <div class="project-right">
+        <div class="project-visual">
+          <svg width="100%" viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+            <defs><marker id="a3" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M1 1L4 2.5L1 4" fill="none" stroke="#4f8ef7" stroke-width="1" stroke-linecap="round"/></marker></defs>
+            <ellipse cx="110" cy="24" rx="58" ry="18" fill="#1a2130" stroke="rgba(255,255,255,0.09)" stroke-width="0.5"/>
+            <text x="110" y="21" text-anchor="middle" style="fill:#525d70;font-size:8px;font-family:monospace">CONFOUNDER</text>
+            <text x="110" y="32" text-anchor="middle" style="fill:#8892a4;font-size:8.5px;font-family:monospace">Mol. structure</text>
+            <ellipse cx="50" cy="105" rx="44" ry="18" fill="#151d2c" stroke="rgba(79,142,247,0.25)" stroke-width="0.5"/>
+            <text x="50" y="102" text-anchor="middle" style="fill:#4f8ef7;font-size:8px;font-family:monospace">TREATMENT</text>
+            <text x="50" y="113" text-anchor="middle" style="fill:#7eaafb;font-size:8.5px;font-family:monospace">EW group</text>
+            <ellipse cx="170" cy="105" rx="44" ry="18" fill="#151d2c" stroke="rgba(79,142,247,0.3)" stroke-width="0.5"/>
+            <text x="170" y="102" text-anchor="middle" style="fill:#4f8ef7;font-size:8px;font-family:monospace">OUTCOME</text>
+            <text x="170" y="113" text-anchor="middle" style="fill:#e8eaf0;font-size:8.5px;font-weight:600;font-family:monospace">HOMO/LUMO</text>
+            <line x1="76" y1="32" x2="55" y2="87" stroke="#525d70" stroke-width="0.75" stroke-dasharray="3 2" marker-end="url(#a3)"/>
+            <line x1="144" y1="34" x2="164" y2="87" stroke="#525d70" stroke-width="0.75" stroke-dasharray="3 2" marker-end="url(#a3)"/>
+            <line x1="94" y1="105" x2="124" y2="105" stroke="#4f8ef7" stroke-width="1.5" marker-end="url(#a3)"/>
+            <text x="110" y="100" text-anchor="middle" style="fill:#4f8ef7;font-size:7.5px;font-family:monospace">causal?</text>
+            <rect x="58" y="144" width="104" height="26" rx="5" fill="#111620" stroke="rgba(79,142,247,0.2)" stroke-width="0.5"/>
+            <text x="110" y="161" text-anchor="middle" style="fill:#7eaafb;font-size:9px;font-weight:500;font-family:monospace">DoubleML estimate</text>
+            <line x1="80" y1="123" x2="88" y2="142" stroke="#4f8ef7" stroke-width="0.75" stroke-dasharray="2 2" marker-end="url(#a3)"/>
+            <line x1="140" y1="123" x2="132" y2="142" stroke="#4f8ef7" stroke-width="0.75" stroke-dasharray="2 2" marker-end="url(#a3)"/>
+          </svg>
         </div>
+      </div>
+    </div>
 
-        <!-- Top Right - Code Snippet -->
-        <div class="grid-item top-right">
-            <div class="code-window">
-                <div class="code-header">
-                    <span class="dot red"></span>
-                    <span class="dot yellow"></span>
-                    <span class="dot green"></span>
-                    <span class="filename">developer.js</span>
-                </div>
-                <div class="code-content">
-                    <pre><code><span class="keyword">const</span> <span class="variable">profile</span> = {
-  <span class="property">name</span>: <span class="string">'Samuel Bizimana'</span>,
-  <span class="property">title</span>: <span class="string">'AI Engineer | Data Scientist'</span>,
-  <span class="property">skills</span>: [
-    <span class="string">'Python'</span>, <span class="string">'Machine Learning'</span>,
-    <span class="string">'Power BI'</span>, <span class="string">'R'</span>, <span class="string">'C++'</span>
-  ],
-  <span class="property">passion</span>: <span class="string">'AI for Social Good'</span>,
-  <span class="property">hireable</span>: <span class="keyword">true</span>,
-  <span class="function">contact</span>: <span class="keyword">function</span>() {
-    <span class="keyword">return</span> <span class="string">'kabashibizimana@gmail.com'</span>;
+    <div class="project-item reveal">
+      <div>
+        <p class="project-number" data-en>03 / Deep Learning</p>
+        <p class="project-number" data-fr>03 / Deep Learning</p>
+        <h3 class="project-title" data-en>Pulmonary Anomaly Detection - CNN to Production</h3>
+        <h3 class="project-title" data-fr>Detection d'Anomalies Pulmonaires - CNN en Production</h3>
+        <p class="project-subtitle" data-en>Independent project · 2026</p>
+        <p class="project-subtitle" data-fr>Projet independant · 2026</p>
+        <div class="project-metrics">
+          <div class="metric"><span class="metric-val">5,856</span><span class="metric-key" data-en>chest radiographs</span><span class="metric-key" data-fr>radiographies</span></div>
+          <div class="metric"><span class="metric-val">92%</span><span class="metric-key" data-en>accuracy</span><span class="metric-key" data-fr>precision</span></div>
+          <div class="metric"><span class="metric-val">CI/CD</span><span class="metric-key" data-en>automated pipeline</span><span class="metric-key" data-fr>pipeline automatise</span></div>
+        </div>
+        <p class="project-body" data-en>End-to-end deep learning pipeline for pneumonia detection. Full CI/CD from raw data through training, testing, and containerized deployment via FastAPI and Docker on Hugging Face Spaces. Demonstrates the complete model-to-production journey.</p>
+        <p class="project-body" data-fr>Pipeline deep learning bout en bout pour la detection de pneumonies. CI/CD complet de la donnee brute jusqu'au deploiement containerise via FastAPI et Docker sur Hugging Face Spaces.</p>
+        <div class="project-tags">
+          <span class="tag">Python</span><span class="tag">TensorFlow</span><span class="tag">CNN</span><span class="tag">FastAPI</span><span class="tag">Docker</span><span class="tag">Gradio</span><span class="tag">AWS</span>
+        </div>
+      </div>
+      <div class="project-right">
+        <div class="project-visual">
+          <svg width="100%" viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+            <defs><marker id="a4" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M1 1L4 2.5L1 4" fill="none" stroke="#525d70" stroke-width="1" stroke-linecap="round"/></marker></defs>
+            <rect x="60" y="8" width="100" height="26" rx="5" fill="#1a2130" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+            <text x="110" y="25" text-anchor="middle" style="fill:#8892a4;font-size:9.5px;font-family:monospace">5,856 X-rays</text>
+            <line x1="110" y1="34" x2="110" y2="46" stroke="#525d70" stroke-width="0.75" marker-end="url(#a4)"/>
+            <rect x="40" y="48" width="140" height="26" rx="5" fill="#1a2130" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+            <text x="110" y="65" text-anchor="middle" style="fill:#8892a4;font-size:9.5px;font-family:monospace">Augment + Balance</text>
+            <line x1="110" y1="74" x2="110" y2="86" stroke="#525d70" stroke-width="0.75" marker-end="url(#a4)"/>
+            <rect x="40" y="88" width="140" height="26" rx="5" fill="#151d2c" stroke="rgba(79,142,247,0.22)" stroke-width="0.5"/>
+            <text x="110" y="105" text-anchor="middle" style="fill:#e8eaf0;font-size:9.5px;font-weight:600;font-family:monospace">CNN - 92% accuracy</text>
+            <line x1="110" y1="114" x2="110" y2="126" stroke="#4f8ef7" stroke-width="0.75" stroke-dasharray="3 2" marker-end="url(#a4)"/>
+            <rect x="40" y="128" width="140" height="26" rx="5" fill="#151d2c" stroke="rgba(79,142,247,0.27)" stroke-width="0.5"/>
+            <text x="110" y="145" text-anchor="middle" style="fill:#7eaafb;font-size:9.5px;font-family:monospace">FastAPI + Docker</text>
+            <line x1="110" y1="154" x2="110" y2="166" stroke="#4f8ef7" stroke-width="0.75" stroke-dasharray="3 2" marker-end="url(#a4)"/>
+            <rect x="60" y="168" width="100" height="22" rx="5" fill="#111620" stroke="rgba(79,142,247,0.2)" stroke-width="0.5"/>
+            <text x="110" y="183" text-anchor="middle" style="fill:#7eaafb;font-size:8.5px;font-family:monospace">Hugging Face Spaces</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-item reveal">
+      <div>
+        <p class="project-number">04 / OpenXAI</p>
+        <h3 class="project-title">OpenXAI Lab</h3>
+        <p class="project-subtitle" data-en>Open-source XAI benchmarking framework</p>
+        <p class="project-subtitle" data-fr>Framework open-source de benchmarking XAI</p>
+        <p class="project-body" data-en>A unified Python framework for generating, evaluating, and benchmarking Explainable AI methods. Provides a consistent interface across SHAP, LIME, counterfactuals, and permutation-based approaches. 99% test coverage, full CI/CD, Apache 2.0 licensed.</p>
+        <p class="project-body" data-fr>Framework Python unifie pour generer, evaluer et comparer des methodes d'IA Explicable. Interface coherente pour SHAP, LIME, contrefactuels et permutation. 99% de couverture de tests, CI/CD complet, licence Apache 2.0.</p>
+        <div class="project-tags">
+          <span class="tag">Python</span><span class="tag">SHAP</span><span class="tag">LIME</span><span class="tag">Counterfactuals</span><span class="tag">CI/CD</span><span class="tag">Apache 2.0</span>
+        </div>
+        <a href="https://github.com/Bsamuel-tech/openxai-lab" target="_blank" rel="noopener" class="project-link">
+          <span data-en>View on GitHub</span><span data-fr>Voir sur GitHub</span> &rarr;
+        </a>
+      </div>
+      <div class="project-right">
+        <div class="project-visual">
+          <svg width="100%" viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+            <text x="110" y="22" text-anchor="middle" style="fill:#525d70;font-size:8.5px;letter-spacing:.08em;font-family:monospace">XAI METHODS</text>
+            <rect x="16" y="32" width="86" height="30" rx="6" fill="#1a2130" stroke="rgba(79,142,247,0.2)" stroke-width="0.5"/>
+            <text x="59" y="51" text-anchor="middle" style="fill:#7eaafb;font-size:10px;font-weight:500;font-family:monospace">SHAP</text>
+            <rect x="118" y="32" width="86" height="30" rx="6" fill="#1a2130" stroke="rgba(79,142,247,0.2)" stroke-width="0.5"/>
+            <text x="161" y="51" text-anchor="middle" style="fill:#7eaafb;font-size:10px;font-weight:500;font-family:monospace">LIME</text>
+            <rect x="16" y="80" width="86" height="30" rx="6" fill="#151d2c" stroke="rgba(79,142,247,0.3)" stroke-width="0.5"/>
+            <text x="59" y="99" text-anchor="middle" style="fill:#e8eaf0;font-size:9.5px;font-weight:600;font-family:monospace">Counter-</text>
+            <rect x="118" y="80" width="86" height="30" rx="6" fill="#1a2130" stroke="rgba(79,142,247,0.2)" stroke-width="0.5"/>
+            <text x="161" y="94" text-anchor="middle" style="fill:#7eaafb;font-size:9px;font-family:monospace">Permutation</text>
+            <text x="59" y="107" text-anchor="middle" style="fill:#e8eaf0;font-size:9.5px;font-weight:600;font-family:monospace">factuals</text>
+            <rect x="60" y="132" width="100" height="28" rx="6" fill="#111620" stroke="rgba(79,142,247,0.2)" stroke-width="0.5"/>
+            <text x="110" y="146" text-anchor="middle" style="fill:#4f8ef7;font-size:8.5px;font-family:monospace">Unified API</text>
+            <text x="110" y="156" text-anchor="middle" style="fill:#525d70;font-size:7.5px;font-family:monospace">99% test coverage</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div id="experience" class="section-wrap">
+  <div class="section-header">
+    <span class="section-label" data-en>02 - experience</span>
+    <span class="section-label" data-fr>02 - experience</span>
+    <h2 class="section-title" data-en>Experience</h2>
+    <h2 class="section-title" data-fr>Experience</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="timeline">
+
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-meta">
+        <span class="timeline-role" data-en>AI Intern - Explainable AI and Backend</span>
+        <span class="timeline-role" data-fr>Stagiaire IA - IA Explicable et Backend</span>
+        <span class="timeline-date">May 2026 - Present</span>
+      </div>
+      <p class="timeline-org">Nightingale Heart Project · JGU University, Mainz, Germany</p>
+      <ul class="timeline-bullets">
+        <li data-en>Built a production REST API (R/Plumber + Python) for cardiovascular risk prediction trained on 42,377 patient records from the European Social Survey.</li>
+        <li data-fr>Construction d'une API REST en production (R/Plumber + Python) pour la prediction du risque cardiovasculaire sur 42 377 patients.</li>
+        <li data-en>Implemented MOC and DiCE counterfactual explanation algorithms generating clinically valid lifestyle recommendations per patient.</li>
+        <li data-fr>Implementation des algorithmes MOC et DiCE pour des recommandations de style de vie cliniquement valides par patient.</li>
+        <li data-en>Developed a Shiny multi-calculator comparison tool benchmarking the model against SCORE2, PREVENT, and WHO risk calculators.</li>
+        <li data-fr>Developpement d'un outil Shiny comparant le modele aux calculateurs SCORE2, PREVENT et OMS.</li>
+        <li data-en>Contribution to a scientific paper on explainable AI in cardiovascular medicine. Deployed via Docker and AWS ECS.</li>
+        <li data-fr>Contribution a un article scientifique sur l'IA explicable en cardiologie. Deploye via Docker et AWS ECS.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-meta">
+        <span class="timeline-role" data-en>Researcher - Causal Machine Learning</span>
+        <span class="timeline-role" data-fr>Chercheur - Machine Learning Causal</span>
+        <span class="timeline-date">Jun 2026 - Present</span>
+      </div>
+      <p class="timeline-org">IEMN Lab · CNRS UMR 8520 · Junia ISEN, Lille</p>
+      <ul class="timeline-bullets">
+        <li data-en>Designing a causal ML pipeline estimating effects of electron-withdrawing groups on HOMO/LUMO properties across approximately 10,000 organic molecules.</li>
+        <li data-fr>Conception d'un pipeline ML causal sur les proprietes HOMO/LUMO de pres de 10 000 molecules organiques.</li>
+        <li data-en>Using Double Machine Learning and Causal Forests (grf) with xTB DFT validation. Targeting Nature Machine Intelligence.</li>
+        <li data-fr>DoubleML, Causal Forests (grf), validation DFT xTB. Soumission cible : Nature Machine Intelligence.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-meta">
+        <span class="timeline-role" data-en>Junior R&D Researcher</span>
+        <span class="timeline-role" data-fr>Chercheur Junior R&D</span>
+        <span class="timeline-date">Nov 2025 - Apr 2026</span>
+      </div>
+      <p class="timeline-org">Junia Ingenieurs · Lille, France</p>
+      <ul class="timeline-bullets">
+        <li data-en>Benchmarked ML models (Random Forest, ANN, CART, Gradient Boosting) on materials science datasets. Technical reports in English.</li>
+        <li data-fr>Benchmarking de modeles ML sur des donnees de science des materiaux. Rapports techniques en anglais.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-meta">
+        <span class="timeline-role" data-en>Data Scientist Intern</span>
+        <span class="timeline-role" data-fr>Stagiaire Data Science</span>
+        <span class="timeline-date">Oct 2024 - Jan 2025</span>
+      </div>
+      <p class="timeline-org">AFRITEC · University of Rwanda and Future Interns · India (Hybrid)</p>
+      <ul class="timeline-bullets">
+        <li data-en>EDA in Python (Pandas, Seaborn), Power BI dashboards with SQL Server, loan approval prediction model (Scikit-learn).</li>
+        <li data-fr>EDA Python, tableaux de bord Power BI avec SQL Server, modele de prediction de credit bancaire.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-meta">
+        <span class="timeline-role" data-en>Junior Software Developer</span>
+        <span class="timeline-role" data-fr>Developpeur Logiciel Junior</span>
+        <span class="timeline-date">Oct 2023 - Feb 2024</span>
+      </div>
+      <p class="timeline-org">O'Genius Priority Ltd · Kigali, Rwanda</p>
+      <ul class="timeline-bullets">
+        <li data-en>Full-stack development (HTML5, CSS, JavaScript) for the O'Genius Panda STEM e-learning platform serving schools across East Africa.</li>
+        <li data-fr>Developpement full-stack pour la plateforme STEM O'Genius Panda, utilisee par des ecoles en Afrique de l'Est.</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- RESEARCH -->
+<div id="research" class="section-wrap">
+  <div class="section-header">
+    <span class="section-label" data-en>03 - research</span>
+    <span class="section-label" data-fr>03 - recherche</span>
+    <h2 class="section-title" data-en>Research interests</h2>
+    <h2 class="section-title" data-fr>Interets de recherche</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="research-grid">
+    <div class="research-card reveal">
+      <span class="research-tag">Explainable AI</span>
+      <h3 class="research-title" data-en>Counterfactual and Local Explanations</h3>
+      <h3 class="research-title" data-fr>Explications Contrefactuelles et Locales</h3>
+      <p class="research-body" data-en>Generating interpretable explanations through counterfactual reasoning (MOC, DiCE) and local approximations (SHAP, LIME). Focus on clinical applicability and directional validity.</p>
+      <p class="research-body" data-fr>Explications interpretables via le raisonnement contrefactuel (MOC, DiCE) et les approximations locales (SHAP, LIME). Focus sur l'applicabilite clinique et la validite directionnelle.</p>
+    </div>
+    <div class="research-card reveal">
+      <span class="research-tag">Causal Inference</span>
+      <h3 class="research-title" data-en>Causal ML for Scientific Data</h3>
+      <h3 class="research-title" data-fr>ML Causal pour Donnees Scientifiques</h3>
+      <p class="research-body" data-en>Applying causal methods (DoubleML, Causal Forests, IV) to identify true treatment effects in molecular and materials science data.</p>
+      <p class="research-body" data-fr>Application de methodes causales (DoubleML, Causal Forests, IV) pour identifier de vrais effets de traitement dans des donnees moleculaires et materiaux.</p>
+    </div>
+    <div class="research-card reveal">
+      <span class="research-tag">Production Systems</span>
+      <h3 class="research-title" data-en>AI Systems Engineering</h3>
+      <h3 class="research-title" data-fr>Ingenierie de Systemes IA</h3>
+      <p class="research-body" data-en>Bridging research and production through robust API design, containerization, CI/CD pipelines, and monitoring for deployed ML systems.</p>
+      <p class="research-body" data-fr>Pont entre recherche et production via la conception d'API robuste, la conteneurisation, les pipelines CI/CD et la surveillance des systemes ML.</p>
+    </div>
+    <div class="research-card reveal">
+      <span class="research-tag">Applications</span>
+      <h3 class="research-title" data-en>AI for Medical and Scientific Use</h3>
+      <h3 class="research-title" data-fr>IA pour Usage Medical et Scientifique</h3>
+      <p class="research-body" data-en>Applying AI to high-stakes domains - clinical decision support, molecular property prediction, materials science - with emphasis on trustworthiness.</p>
+      <p class="research-body" data-fr>Application de l'IA dans des domaines a enjeux : aide a la decision clinique, prediction de proprietes moleculaires, science des materiaux.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="section-wrap">
+  <div class="section-header">
+    <span class="section-label" data-en>04 - about</span>
+    <span class="section-label" data-fr>04 - a propos</span>
+    <h2 class="section-title" data-en>Skills and background</h2>
+    <h2 class="section-title" data-fr>Competences et parcours</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-grid">
+    <div>
+      <div class="skills-taxonomy">
+        <div class="skill-row reveal">
+          <span class="skill-category" data-en>Machine Learning</span>
+          <span class="skill-category" data-fr>Machine Learning</span>
+          <span class="skill-items">TensorFlow · Keras · Scikit-learn · <strong>Random Forest</strong> · ANN · <strong>CNN</strong> · GNN · Gradient Boosting</span>
+        </div>
+        <div class="skill-row reveal">
+          <span class="skill-category" data-en>Explainable AI</span>
+          <span class="skill-category" data-fr>IA Explicable</span>
+          <span class="skill-items"><strong>SHAP</strong> · Counterfactuals · <strong>MOC</strong> · DiCE · LIME · iml · sensemakr</span>
+        </div>
+        <div class="skill-row reveal">
+          <span class="skill-category" data-en>Causal ML</span>
+          <span class="skill-category" data-fr>ML Causal</span>
+          <span class="skill-items"><strong>DoubleML</strong> · Causal Forests · grf · Instrumental Variables · CATE maps</span>
+        </div>
+        <div class="skill-row reveal">
+          <span class="skill-category" data-en>Engineering</span>
+          <span class="skill-category" data-fr>Ingenierie</span>
+          <span class="skill-items"><strong>Python</strong> · <strong>R</strong> · C++ · SQL · JavaScript · REST APIs</span>
+        </div>
+        <div class="skill-row reveal">
+          <span class="skill-category" data-en>Deployment</span>
+          <span class="skill-category" data-fr>Deploiement</span>
+          <span class="skill-items"><strong>Docker</strong> · AWS ECS · CI/CD · FastAPI · R Plumber · GitHub Actions</span>
+        </div>
+        <div class="skill-row reveal">
+          <span class="skill-category">Data</span>
+          <span class="skill-items">SQL · Power BI · Pandas · ggplot2 · Shiny · RDKit</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-aside">
+      <div class="reveal">
+        <p class="aside-label" data-en>Education</p>
+        <p class="aside-label" data-fr>Formation</p>
+        <div class="edu-block">
+          <p class="edu-degree" data-en>Cycle Ingenieur, specialite Intelligence Artificielle</p>
+          <p class="edu-degree" data-fr>Cycle Ingenieur, specialite Intelligence Artificielle</p>
+          <p class="edu-school" data-en>Institut Superieur de l'Electronique et du Numerique (JUNIA - ISEN), Lille</p>
+          <p class="edu-school" data-fr>Institut Superieur de l'Electronique et du Numerique (JUNIA - ISEN), Lille</p>
+          <p class="edu-date">Sept 2025 - Sept 2027</p>
+        </div>
+        <div class="edu-block">
+          <p class="edu-degree" data-en>Bachelor of Science, Computer Engineering</p>
+          <p class="edu-degree" data-fr>Licence en Genie Informatique (Bachelor of Science)</p>
+          <p class="edu-school">Kwame Nkrumah University of Science and Technology (KNUST), Ghana</p>
+          <p class="edu-date">Jan 2023 - Sept 2025</p>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <p class="aside-label" data-en>Languages</p>
+        <p class="aside-label" data-fr>Langues</p>
+        <div class="lang-list">
+          <div class="lang-item"><span>English</span><span class="lang-level">Native</span></div>
+          <div class="lang-item"><span>Francais</span><span class="lang-level">Courant (B2)</span></div>
+          <div class="lang-item"><span>Kinyarwanda</span><span class="lang-level" data-en>Native</span><span class="lang-level" data-fr>Natif</span></div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <p class="aside-label" data-en>Certifications</p>
+        <p class="aside-label" data-fr>Certifications</p>
+        <div class="cert-list">
+          <p class="cert-item">Google AI Essentials (2023)</p>
+          <p class="cert-item">Crowdsource AI - Google (2023)</p>
+          <p class="cert-item">AI Essentials - ALX (2023)</p>
+          <p class="cert-item">Data Science and Analytics - HP LIFE (2024)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="section-wrap">
+  <div class="section-header">
+    <span class="section-label">05 - contact</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="contact-wrap">
+    <h2 class="contact-headline reveal" data-en>Let's build something meaningful.</h2>
+    <h2 class="contact-headline reveal" data-fr>Construisons quelque chose qui compte.</h2>
+    <p class="contact-sub reveal" data-en>I am looking for a work-study contract (alternance) starting September 2026. Open to roles in AI engineering, explainable AI, causal ML, and applied research in France.</p>
+    <p class="contact-sub reveal" data-fr>Je recherche un contrat en alternance a partir de septembre 2026. Ouvert aux missions en ingenierie IA, IA explicable, ML causal et recherche appliquee en France.</p>
+    <div class="contact-links reveal">
+      <a href="mailto:samuel.bizimana@student.junia.com" class="contact-link">
+        <span class="contact-link-icon">&#9993;</span>
+        samuel.bizimana@student.junia.com
+      </a>
+      <a href="https://github.com/Bsamuel-tech" target="_blank" rel="noopener" class="contact-link">
+        <span class="contact-link-icon">&#9679;</span>
+        github.com/Bsamuel-tech
+      </a>
+      <a href="https://www.linkedin.com/in/samuel-bizimana/" target="_blank" rel="noopener" class="contact-link">
+        <span class="contact-link-icon">&#9654;</span>
+        linkedin.com/in/samuel-bizimana
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>Samuel Bizimana · 2026</span>
+  <span data-en>AI Engineer · Machine Learning · Research</span>
+  <span data-fr>Ingenieur IA · Machine Learning · Recherche</span>
+  <a href="https://github.com/Bsamuel-tech/Sam_Portofolio" target="_blank" rel="noopener" style="color:var(--text3);text-decoration:none">source</a>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>40)},{passive:true});
+
+const saved=localStorage.getItem('sb-lang')||'en';
+function setLang(l){
+  document.documentElement.setAttribute('data-lang',l);
+  document.getElementById('btn-en').classList.toggle('active',l==='en');
+  document.getElementById('btn-fr').classList.toggle('active',l==='fr');
+  document.getElementById('btn-en').setAttribute('aria-pressed',l==='en');
+  document.getElementById('btn-fr').setAttribute('aria-pressed',l==='fr');
+  localStorage.setItem('sb-lang',l);
+}
+setLang(saved);
+
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('visible'),i*60);
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+  const ps=[
+    {el:document.getElementById('p1'),y0:70,y1:90},
+    {el:document.getElementById('p2'),y0:162,y1:180},
+    {el:document.getElementById('p3'),y0:254,y1:272},
+    {el:document.getElementById('p4'),y0:344,y1:362}
+  ];
+  let f=0;const C=300;
+  function anim(){
+    f=(f+1)%C;
+    const t=f/C;
+    ps.forEach((p,i)=>{
+      if(!p.el)return;
+      const ph=(t+i*0.25)%1;
+      if(ph<0.28){
+        const pr=ph/0.28;
+        p.el.setAttribute('cy',p.y0+(p.y1-p.y0)*pr);
+        p.el.setAttribute('opacity',Math.min(pr*4,0.85));
+      }else{
+        p.el.setAttribute('opacity','0');
+      }
+    });
+    requestAnimationFrame(anim);
   }
-};</code></pre>
-                </div>
-            </div>
-        </div>
-
-        <!-- Navigation Grid - Center Section -->
-        <div class="navigation-grid">
-            <div class="nav-card" onclick="navigateTo('skills.html')">
-                <div class="nav-icon">💻</div>
-                <h3>Skills</h3>
-                <p>Explore my technical expertise</p>
-            </div>
-
-            <div class="nav-card" onclick="navigateTo('education.html')">
-                <div class="nav-icon">🎓</div>
-                <h3>Education</h3>
-                <p>My academic journey</p>
-            </div>
-
-            <div class="nav-card" onclick="navigateTo('experience.html')">
-                <div class="nav-icon">💼</div>
-                <h3>Experience</h3>
-                <p>Professional path</p>
-            </div>
-
-            <div class="nav-card" onclick="navigateTo('projects.html')">
-                <div class="nav-icon">🚀</div>
-                <h3>Projects</h3>
-                <p>What I've built</p>
-            </div>
-
-            <div class="nav-card" onclick="navigateTo('contact.html')">
-                <div class="nav-icon">📧</div>
-                <h3>Contact</h3>
-                <p>Let's connect</p>
-            </div>
-        </div>
-
-        <!-- Bottom - Profile Image -->
-        <div class="grid-item profile-section">
-            <div class="profile-container">
-                <img src="assets/images/profile.jpg" alt="Samuel Bizimana" class="profile-img" onerror="this.src='https://via.placeholder.com/300x300/667eea/ffffff?text=Samuel+Bizimana'">
-                <div class="profile-glow"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Theme Toggle -->
-    <div class="theme-toggle" onclick="toggleTheme()">
-        <span id="theme-icon">🌓</span>
-    </div>
-
-    <!-- CV Request Modal -->
-    <div class="cv-modal" id="cvModal">
-        <div class="cv-modal-content">
-            <span class="close-modal" onclick="closeCVModal()">&times;</span>
-            <h3>📄 Request CV Access</h3>
-            <p>Please request access to view my CV. I'll grant access within 24 hours!</p>
-            <div class="modal-buttons">
-                <a href="https://drive.google.com/file/d/1qPh7_O-ZteP2InQcDGhweVRwmvFtn_89/view?usp=sharing" target="_blank" class="btn-google-drive" onclick="trackCVRequest()">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12.01 1.5c-5.522 0-10 4.478-10 10s4.478 10 10 10 10-4.478 10-10-4.478-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-1-13h2v6h-2v-6zm0 8h2v2h-2v-2z"/>
-                    </svg>
-                    Request Access on Google Drive
-                </a>
-                <button class="btn-close" onclick="closeCVModal()">Cancel</button>
-            </div>
-            <p class="info-text">💡 <strong>How it works:</strong> Click the button above, then click "Request access" on Google Drive. You'll receive an email once I approve your request.</p>
-        </div>
-    </div>
-
-    <script src="js/handwriting.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/navigation.js"></script>
-    <script src="js/animations.js"></script>
+  anim();
+}
+</script>
 </body>
 </html>
