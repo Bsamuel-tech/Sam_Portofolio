@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience - Samuel Bizimana</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .experience-page {
+            min-height: 100vh;
+            padding: 40px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-top: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 56px;
+            background: linear-gradient(135deg, #00d4ff, #667eea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            color: var(--text-dim);
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background: var(--card-bg);
+            border: 1px solid var(--accent);
+            padding: 12px 25px;
+            border-radius: 50px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            background: var(--accent);
+            color: var(--bg);
+            transform: translateX(-5px);
+        }
+
+        .experience-grid {
+            display: grid;
+            gap: 40px;
+        }
+
+        .experience-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--gradient);
+            transform: scaleY(0);
+            transition: transform 0.4s ease;
+        }
+
+        .experience-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .experience-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 20px 60px var(--accent-glow);
+            border-color: var(--accent);
+        }
+
+        .experience-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .experience-icon {
+            font-size: 64px;
+            flex-shrink: 0;
+        }
+
+        .experience-info {
+            flex: 1;
+        }
+
+        .experience-info h3 {
+            font-size: 28px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .experience-info h4 {
+            font-size: 20px;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .experience-date {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 20px;
+            font-size: 14px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .experience-description {
+            color: var(--text-dim);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .responsibilities {
+            margin-top: 25px;
+        }
+
+        .responsibilities h5 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .responsibilities ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .responsibilities li {
+            color: var(--text-dim);
+            margin: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        .responsibilities li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 18px;
+        }
+
+        .achievement-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(102, 126, 234, 0.2);
+            border: 1px solid var(--accent-secondary);
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--accent-secondary);
+            margin: 5px;
+        }
+
+        .skills-used {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .skill-tag {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 12px;
+            color: var(--accent);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+
+    <a href="index.html" class="back-button">
+        ← Home
+    </a>
+
+    <div class="experience-page">
+        <div class="page-header">
+            <h1>💼 Professional Experience</h1>
+            <p>"Transforming ideas into digital reality, one project at a time"</p>
+        </div>
+
+        <div class="experience-grid">
+            <!-- AI & Data Analytics Trainee -->
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div class="experience-icon">🤖</div>
+                    <div class="experience-info">
+                        <h3>AI & Data Analytics Trainee</h3>
+                        <h4>AFRITEC – University of Rwanda</h4>
+                        <span class="experience-date">Nov 2024 – Dec 2024</span>
+                    </div>
+                </div>
+                
+                <p class="experience-description">
+                    Intensive training program focused on supervised and unsupervised machine learning techniques, with practical applications in real-world scenarios.
+                </p>
+
+                <div class="responsibilities">
+                    <h5>🎯 Key Learning Areas:</h5>
+                    <ul>
+                        <li>Gained exposure to supervised learning models including Linear Regression, Support Vector Machines (SVM), Random Forests, and Decision Trees</li>
+                        <li>Explored unsupervised learning methods and clustering techniques</li>
+                        <li>Studied introductory Convolutional Neural Networks (CNN) concepts</li>
+                        <li>Strengthened understanding of practical ML applications in real-world scenarios</li>
+                        <li>Developed skills in model evaluation and hyperparameter tuning</li>
+                    </ul>
+                </div>
+
+                <div class="skills-used">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">Linear Regression</span>
+                    <span class="skill-tag">SVM</span>
+                    <span class="skill-tag">Random Forests</span>
+                    <span class="skill-tag">CNN</span>
+                </div>
+            </div>
+
+            <!-- Data Science & Analytics Intern -->
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div class="experience-icon">📊</div>
+                    <div class="experience-info">
+                        <h3>Data Science & Analytics Intern</h3>
+                        <h4>Future Interns – India (Remote)</h4>
+                        <span class="experience-date">Oct 2024 – Nov 2024</span>
+                    </div>
+                </div>
+                
+                <p class="experience-description">
+                    Remote internship focused on data analysis, visualization, and machine learning applications across diverse datasets.
+                </p>
+
+                <div class="responsibilities">
+                    <h5>🎯 Key Achievements:</h5>
+                    <ul>
+                        <li>Conducted comprehensive data cleaning and exploratory data analysis on Kaggle's Titanic dataset</li>
+                        <li>Designed interactive IPL data dashboards using Power BI to visualize player and team performance trends</li>
+                        <li>Built a Loan Approval Prediction Model using Python with high accuracy rates</li>
+                        <li>Performed feature engineering and data preprocessing for improved model performance</li>
+                        <li>Created data visualizations to communicate insights to stakeholders</li>
+                    </ul>
+                </div>
+
+                <div class="skills-used">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">Data Cleaning</span>
+                    <span class="skill-tag">EDA</span>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">Data Visualization</span>
+                </div>
+            </div>
+
+            <!-- Junior Software Developer -->
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div class="experience-icon">💻</div>
+                    <div class="experience-info">
+                        <h3>Junior Software Developer</h3>
+                        <h4>O'Genius Panda LTD – Kigali, Rwanda</h4>
+                        <span class="experience-date">Oct 2023 – Feb 2024</span>
+                    </div>
+                </div>
+                
+                <p class="experience-description">
+                    Full-time position developing and maintaining web applications, focusing on frontend development and performance optimization.
+                </p>
+
+                <div class="responsibilities">
+                    <h5>🎯 Key Achievements:</h5>
+                    <ul>
+                        <li>Developed and maintained responsive web applications using HTML, CSS, and JavaScript</li>
+                        <li>Resolved critical software bugs and improved application performance by 20%</li>
+                        <li>Implemented new features that increased user engagement by 15%</li>
+                        <li>Collaborated with cross-functional teams to deliver projects on time</li>
+                        <li>Conducted code reviews and contributed to improving code quality</li>
+                        <li>Participated in agile development processes and sprint planning</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <span class="achievement-badge">⚡ 20% Performance Improvement</span>
+                    <span class="achievement-badge">📈 15% User Engagement Increase</span>
+                </div>
+
+                <div class="skills-used">
+                    <span class="skill-tag">HTML5</span>
+                    <span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Web Development</span>
+                    <span class="skill-tag">Debugging</span>
+                    <span class="skill-tag">Agile</span>
+                </div>
+            </div>
+
+            <!-- Mathematics Teacher -->
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div class="experience-icon">📐</div>
+                    <div class="experience-info">
+                        <h3>Mathematics Teacher</h3>
+                        <h4>G.S. Mpanga Senior High School – Kirehe, Rwanda</h4>
+                        <span class="experience-date">Nov 2021 – Feb 2022</span>
+                    </div>
+                </div>
+                
+                <p class="experience-description">
+                    Teaching position focused on advanced mathematics education and implementing data-driven teaching methodologies.
+                </p>
+
+                <div class="responsibilities">
+                    <h5>🎯 Key Responsibilities:</h5>
+                    <ul>
+                        <li>Taught advanced mathematics to high school students</li>
+                        <li>Designed interactive and engaging lesson plans to improve student understanding</li>
+                        <li>Tracked student progress using data-driven techniques and analytics</li>
+                        <li>Developed assessment materials and provided personalized feedback</li>
+                        <li>Mentored students in problem-solving and critical thinking skills</li>
+                        <li>Collaborated with fellow teachers to improve curriculum</li>
+                    </ul>
+                </div>
+
+                <div class="skills-used">
+                    <span class="skill-tag">Teaching</span>
+                    <span class="skill-tag">Communication</span>
+                    <span class="skill-tag">Data Analysis</span>
+                    <span class="skill-tag">Curriculum Design</span>
+                    <span class="skill-tag">Mentoring</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leadership & Volunteering Section -->
+        <div style="margin-top: 80px; padding: 50px; background: var(--card-bg); border-radius: 20px; border: 1px solid rgba(0, 212, 255, 0.2);">
+            <h2 style="font-size: 36px; text-align: center; margin-bottom: 40px; background: linear-gradient(135deg, #00d4ff, #667eea); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                🌟 Leadership & Community Involvement
+            </h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <!-- Arduino Club Executive -->
+                <div style="background: rgba(10, 14, 39, 0.6); padding: 30px; border-radius: 15px; border: 1px solid rgba(0, 212, 255, 0.2); transition: all 0.3s ease;">
+                    <div style="font-size: 48px; margin-bottom: 15px;">⚡</div>
+                    <h4 style="color: var(--accent); margin-bottom: 10px; font-size: 20px;">Executive – Arduino Club</h4>
+                    <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 10px;"><strong>College of Engineering, KNUST</strong></p>
+                    <p style="color: var(--accent); font-size: 13px; margin-bottom: 15px;">Jul 2023 – Jul 2024</p>
+                    <p style="color: var(--text-dim); font-size: 14px; line-height: 1.7;">
+                        Coordinated peer activities and workshops promoting collaborative learning in electronics and programming. Led technical projects and organized hackathons.
+                    </p>
+                </div>
+
+                <!-- RAJAPRA Leader -->
+                <div style="background: rgba(10, 14, 39, 0.6); padding: 30px; border-radius: 15px; border: 1px solid rgba(0, 212, 255, 0.2); transition: all 0.3s ease;">
+                    <div style="font-size: 48px; margin-bottom: 15px;">🎯</div>
+                    <h4 style="color: var(--accent); margin-bottom: 10px; font-size: 20px;">RAJAPRA Leader</h4>
+                    <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 10px;"><strong>Collège de Butamwa</strong></p>
+                    <p style="color: var(--accent); font-size: 13px; margin-bottom: 15px;">Aug 2017 – Jun 2019</p>
+                    <p style="color: var(--text-dim); font-size: 14px; line-height: 1.7;">
+                        Led youth and faith-based activities promoting community engagement. Organized events and mentored younger students.
+                    </p>
+                </div>
+
+                <!-- COVID-19 Volunteer -->
+                <div style="background: rgba(10, 14, 39, 0.6); padding: 30px; border-radius: 15px; border: 1px solid rgba(0, 212, 255, 0.2); transition: all 0.3s ease;">
+                    <div style="font-size: 48px; margin-bottom: 15px;">🤝</div>
+                    <h4 style="color: var(--accent); margin-bottom: 10px; font-size: 20px;">Volunteer</h4>
+                    <p style="color: var(--text-dim); font-size: 14px; margin-bottom: 10px;"><strong>COVID-19 Relief Project</strong></p>
+                    <p style="color: var(--accent); font-size: 13px; margin-bottom: 15px;">Jul – Aug 2020</p>
+                    <p style="color: var(--text-dim); font-size: 14px; line-height: 1.7;">
+                        Supported logistics and safety awareness during pandemic relief efforts. Helped distribute essential supplies to affected communities.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" onclick="toggleTheme()">
+        <span id="theme-icon">🌓</span>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+</body>
+</html>
