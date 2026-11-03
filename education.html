@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education - Samuel Bizimana</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .education-page {
+            min-height: 100vh;
+            padding: 40px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 56px;
+            background: linear-gradient(135deg, #00d4ff, #667eea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            color: var(--text-dim);
+            font-size: 18px;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background: var(--card-bg);
+            border: 1px solid var(--accent);
+            padding: 12px 25px;
+            border-radius: 50px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .back-button:hover {
+            background: var(--accent);
+            color: var(--bg);
+            transform: translateX(-5px);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, transparent, var(--accent), transparent);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: 80px;
+            position: relative;
+            width: 45%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: 0;
+            margin-right: auto;
+            padding-right: 50px;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: auto;
+            margin-right: 0;
+            padding-left: 50px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 4px solid var(--bg);
+            box-shadow: 0 0 20px var(--accent-glow);
+            z-index: 10;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+
+        .education-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 35px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .education-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .education-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px var(--accent-glow);
+            border-color: var(--accent);
+        }
+
+        .edu-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .education-card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .education-card h4 {
+            font-size: 18px;
+            color: var(--text);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .edu-date {
+            color: var(--text-dim);
+            font-size: 14px;
+            margin-bottom: 20px;
+            display: inline-block;
+            padding: 6px 14px;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .education-card p {
+            color: var(--text-dim);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .achievements {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(0, 212, 255, 0.05);
+            border-left: 3px solid var(--accent);
+            border-radius: 8px;
+        }
+
+        .achievements h5 {
+            color: var(--accent);
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .achievements ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .achievements li {
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            color: var(--text-dim);
+        }
+
+        .achievements li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .tag {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--accent);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background: var(--accent);
+            color: var(--bg);
+            transform: scale(1.05);
+        }
+
+        .portfolio-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: var(--accent);
+            color: var(--bg);
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        .certifications-section {
+            margin-top: 80px;
+            padding: 40px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .certifications-section h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #00d4ff, #667eea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .cert-card {
+            background: rgba(10, 14, 39, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        .cert-card h4 {
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .cert-card p {
+            color: var(--text-dim);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+
+    <a href="index.html" class="back-button" onclick="goHome(); return false;">
+        ← Home
+    </a>
+
+    <div class="education-page">
+        <div class="page-header">
+            <h1>🎓 Educational Journey</h1>
+            <p>From high school to advanced AI studies - my path of continuous learning</p>
+        </div>
+
+        <div class="timeline">
+            <!-- Current - Master's Degree -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="education-card">
+                    <div class="edu-icon">🎓</div>
+                    <h3>MSc in Artificial Intelligence</h3>
+                    <h4>JUNIA ISEN, France</h4>
+                    <p class="edu-date">Sept 2025 – Present</p>
+                    <p>Advanced study in AI, machine learning, deep learning, and intelligent systems development. Focus on practical applications of AI to solve real-world challenges and contribute to cutting-edge research in artificial intelligence.</p>
+                    <div class="achievements">
+                        <h5>🎯 Focus Areas</h5>
+                        <ul>
+                            <li>Deep Learning & Neural Networks</li>
+                            <li>Machine Learning Algorithms</li>
+                            <li>Natural Language Processing</li>
+                            <li>Computer Vision</li>
+                            <li>AI Ethics & Responsible AI</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bachelor's Degree -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="education-card">
+                    <div class="edu-icon">💻</div>
+                    <h3>BSc in Computer Engineering</h3>
+                    <h4>Kwame Nkrumah University of Science and Technology (KNUST), Ghana</h4>
+                    <p class="edu-date">Jan 2023 – Sept 2025</p>
+                    <p>Developed strong technical, analytical, and problem-solving skills through comprehensive study of computer science, including programming, algorithms, data structures, databases, and software engineering principles.</p>
+                    <div class="achievements">
+                        <h5>🏆 Key Achievements</h5>
+                        <ul>
+                            <li>Executive – Arduino Club, College of Engineering (Jul 2023 – Jul 2024)</li>
+                            <li>Coordinated peer activities and workshops promoting collaborative learning</li>
+                            <li>Led technical projects and hackathons</li>
+                            <li>Strong foundation in software development and system design</li>
+                        </ul>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="tag">C++</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Data Structures</span>
+                        <span class="tag">Algorithms</span>
+                        <span class="tag">Software Engineering</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- High School -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="education-card">
+                    <div class="edu-icon">📚</div>
+                    <h3>High School Diploma</h3>
+                    <h4>Collège de Butamwa, Kigali, Rwanda</h4>
+                    <p class="edu-date">Feb 2017 – Nov 2019</p>
+                    <p>Focused on Mathematics, Physics, Geography and Entrepreneurship with emphasis on practical laboratory work and scientific research methodologies.</p>
+                    <div class="achievements">
+                        <h5>🏆 Key Achievements</h5>
+                        <ul>
+                            <li>GPA: 4.89 (Science Track)</li>
+                            <li>RAJAPRA Leader (Aug 2017 – Jun 2019)</li>
+                            <li>Led youth and faith-based activities promoting community engagement</li>
+                            <li>Excellence in Mathematics and Physics</li>
+                        </ul>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="tag">Mathematics</span>
+                        <span class="tag">Physics</span>
+                        <span class="tag">Geography</span>
+                        <span class="tag">Entrepreneurship</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Certifications & Training Section -->
+        <div class="certifications-section">
+            <h2>📜 Professional Certifications & Training</h2>
+            <div class="cert-grid">
+                <!-- ALX AiCE -->
+                <div class="cert-card">
+                    <div class="edu-icon">🤖</div>
+                    <h4>Artificial Intelligence & Career Essentials (AiCE)</h4>
+                    <p><strong>ALX Africa</strong></p>
+                    <p class="edu-date">Jan 2024 – Apr 2024</p>
+                    <p>8-week intensive program integrating AI into professional workflows. Mastered tools for data visualization, rapid prototyping (Galileo AI, Uizard), and enhanced content creation (Grammarly, Quillbot, Hemingway App, Sudowrite).</p>
+                    <div class="skill-tags">
+                        <span class="tag">Prompt Engineering</span>
+                        <span class="tag">UI Design</span>
+                        <span class="tag">Prototyping</span>
+                        <span class="tag">Wireframing</span>
+                        <span class="tag">Research</span>
+                    </div>
+                    <a href="https://samuel-bizimana.my.canva.site/dagicciw61o" target="_blank" class="portfolio-link">View Portfolio 🔗</a>
+                </div>
+
+                <!-- SPSS Course -->
+                <div class="cert-card">
+                    <div class="edu-icon">📊</div>
+                    <h4>Data Analysis using SPSS</h4>
+                    <p><strong>Mastercard Foundation</strong></p>
+                    <p class="edu-date">Apr 2023 – Jun 2023</p>
+                    <p>Comprehensive training in statistical analysis, data interpretation, and research methodologies using SPSS software.</p>
+                    <div class="skill-tags">
+                        <span class="tag">SPSS</span>
+                        <span class="tag">Statistical Analysis</span>
+                        <span class="tag">Data Interpretation</span>
+                    </div>
+                </div>
+
+                <!-- Python Course -->
+                <div class="cert-card">
+                    <div class="edu-icon">🐍</div>
+                    <h4>Python for Data Analysis</h4>
+                    <p><strong>Arizona State University</strong></p>
+                    <p class="edu-date">Jun 2023</p>
+                    <p>Course created by Hina Arora, clinical associate professor.Basic and Intermediate Python programming for data analysis. Comprehensive training covering pandas, NumPy, Matplotlib, and Seaborn libraries for data manipulation and visualization.</p>
+                    <div class="skill-tags">
+                        <span class="tag">Pandas</span>
+                        <span class="tag">NumPy</span>
+                        <span class="tag">Matplotlib</span>
+                        <span class="tag">Seaborn</span>
+                    </div>
+                </div>
+
+                <!-- Online Course -->
+                <div class="cert-card">
+                    <div class="edu-icon">📚</div>
+                    <h4>Data science and analytics </h4>
+                    <p><strong>HP LIFE</strong></p>
+                    <p class="edu-date">Oct 2024</p>
+                    <p>Gained a strong understanding of data science and analytics principles, methodologies, and tools. Learned how to apply data-driven approaches to business decision-making, analyze datasets for insights, and address challenges in implementing analytical solutions.</p>
+                    <div class="skill-tags">
+                        <span class="tag">Big Data principles</span>
+                        <span class="tag">methodologies</span>
+                        <span class="tag">Data Modeling</span>
+                        <span class="tag">Data Analysis</span>
+                    </div>
+                </div>
+
+                <!-- International Leadership Forum -->
+                <div class="cert-card">
+                    <div class="edu-icon">🌍</div>
+                    <h4>International Leadership Forum</h4>
+                    <p><strong>Mastercard Foundation</strong></p>
+                    <p class="edu-date">Sept 2023</p>
+                    <p>Leadership development program focusing on global perspectives, cross-cultural communication, and social impact initiatives.</p>
+                    <div class="skill-tags">
+                        <span class="tag">Leadership</span>
+                        <span class="tag">Global Thinking</span>
+                        <span class="tag">Social Impact</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" onclick="toggleTheme()">
+        <span id="theme-icon">🌓</span>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>

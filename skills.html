@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills - Samuel Bizimana</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .skills-page {
+            min-height: 100vh;
+            padding: 40px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-top: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 56px;
+            background: linear-gradient(135deg, #00d4ff, #667eea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            color: var(--text-dim);
+            font-size: 18px;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background: var(--card-bg);
+            border: 1px solid var(--accent);
+            padding: 12px 25px;
+            border-radius: 50px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .back-button:hover {
+            background: var(--accent);
+            color: var(--bg);
+            transform: translateX(-5px);
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .skill-category:hover::before {
+            transform: scaleX(1);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px var(--accent-glow);
+            border-color: var(--accent);
+        }
+
+        .category-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        .skill-category h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .skill-category p {
+            color: var(--text-dim);
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-item {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: 14px;
+            color: var(--accent);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-item:hover {
+            background: var(--accent);
+            color: var(--bg);
+            transform: scale(1.05);
+        }
+
+        .proficiency-bars {
+            margin-top: 30px;
+        }
+
+        .proficiency-item {
+            margin-bottom: 20px;
+        }
+
+        .proficiency-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        .proficiency-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .proficiency-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #667eea);
+            border-radius: 10px;
+            transition: width 1s ease;
+            position: relative;
+        }
+
+        .proficiency-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .tools-section {
+            margin-top: 80px;
+            padding: 50px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .tools-section h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #00d4ff, #667eea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .tool-card {
+            background: rgba(10, 14, 39, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        .tool-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .tool-card h4 {
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .tool-card p {
+            color: var(--text-dim);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+
+    <a href="index.html" class="back-button">
+        ← Home
+    </a>
+
+    <div class="skills-page">
+        <div class="page-header">
+            <h1>💻 Technical Skills</h1>
+            <p>My toolkit for building intelligent solutions and solving complex problems</p>
+        </div>
+
+        <div class="skills-container">
+            <!-- AI & Machine Learning -->
+            <div class="skill-category">
+                <div class="category-icon">🤖</div>
+                <h3>AI & Machine Learning</h3>
+                <p>Building intelligent systems with cutting-edge algorithms and frameworks</p>
+                <div class="skill-list">
+                    <span class="skill-item">Python</span>
+                    <span class="skill-item">TensorFlow</span>
+                    <span class="skill-item">Scikit-learn</span>
+                    <span class="skill-item">Neural Networks</span>
+                    <span class="skill-item">CNN</span>
+                    <span class="skill-item">Random Forests</span>
+                    <span class="skill-item">SVM</span>
+                    <span class="skill-item">Linear Regression</span>
+                    <span class="skill-item">Decision Trees</span>
+                </div>
+                <div class="proficiency-bars">
+                    <div class="proficiency-item">
+                        <div class="proficiency-label">
+                            <span>Python</span>
+                            <span>Advanced</span>
+                        </div>
+                        <div class="proficiency-bar">
+                            <div class="proficiency-fill" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="proficiency-item">
+                        <div class="proficiency-label">
+                            <span>Machine Learning</span>
+                            <span>Intermediate</span>
+                        </div>
+                        <div class="proficiency-bar">
+                            <div class="proficiency-fill" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Analytics -->
+            <div class="skill-category">
+                <div class="category-icon">📊</div>
+                <h3>Data Analytics</h3>
+                <p>Transforming raw data into actionable insights and visualizations</p>
+                <div class="skill-list">
+                    <span class="skill-item">Power BI</span>
+                    <span class="skill-item">SPSS</span>
+                    <span class="skill-item">Pandas</span>
+                    <span class="skill-item">NumPy</span>
+                    <span class="skill-item">Matplotlib</span>
+                    <span class="skill-item">Seaborn</span>
+                    <span class="skill-item">SQL</span>
+                    <span class="skill-item">Excel</span>
+                </div>
+                <div class="proficiency-bars">
+                    <div class="proficiency-item">
+                        <div class="proficiency-label">
+                            <span>Data Visualization</span>
+                            <span>Advanced</span>
+                        </div>
+                        <div class="proficiency-bar">
+                            <div class="proficiency-fill" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="proficiency-item">
+                        <div class="proficiency-label">
+                            <span>Statistical Analysis</span>
+                            <span>Intermediate</span>
+                        </div>
+                        <div class="proficiency-bar">
+                            <div class="proficiency-fill" style="width: 70%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Programming Languages -->
+            <div class="skill-category">
+                <div class="category-icon">⚡</div>
+                <h3>Programming Languages</h3>
+                <p>Versatile coding skills across multiple programming paradigms</p>
+                <div class="skill-list">
+                    <span class="skill-item">Python</span>
+                    <span class="skill-item">R</span>
+                    <span class="skill-item">C++</span>
+                    <span class="skill-item">JavaScript</span>
+                    <span class="skill-item">HTML5</span>
+                    <span class="skill-item">CSS3</span>
+                </div>
+                <div class="proficiency-bars">
+                    <div class="proficiency-item">
+                        <div class="proficiency-label">
+                            <span>Python</span>
+                            <span>Advanced</span>
+                        </div>
+                        <div class="proficiency-bar">
+                            <div class="proficiency-fill" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="proficiency-item">
+                        <div class="proficiency-label">
+                            <span>C++</span>
+                            <span>Intermediate</span>
+                        </div>
+                        <div class="proficiency-bar">
+                            <div class="proficiency-fill" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="proficiency-item">
+                        <div class="proficiency-label">
+                            <span>Web Technologies</span>
+                            <span>Intermediate</span>
+                        </div>
+                        <div class="proficiency-bar">
+                            <div class="proficiency-fill" style="width: 65%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Web Development -->
+            <div class="skill-category">
+                <div class="category-icon">🌐</div>
+                <h3>Web Development</h3>
+                <p>Creating responsive and interactive web applications</p>
+                <div class="skill-list">
+                    <span class="skill-item">HTML5</span>
+                    <span class="skill-item">CSS3</span>
+                    <span class="skill-item">JavaScript</span>
+                    <span class="skill-item">React (Beginner)</span>
+                    <span class="skill-item">UX/UI Design</span>
+                    <span class="skill-item">Responsive Design</span>
+                </div>
+                <div class="proficiency-bars">
+                    <div class="proficiency-item">
+                        <div class="proficiency-label">
+                            <span>Frontend Development</span>
+                            <span>Intermediate</span>
+                        </div>
+                        <div class="proficiency-bar">
+                            <div class="proficiency-fill" style="width: 70%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tools & Platforms -->
+        <div class="tools-section">
+            <h2>🛠️ Tools & Development Environment</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">💻</div>
+                    <h4>IDEs & Editors</h4>
+                    <p>Visual Studio Code, Jupyter Notebook, Spyder, Code::Blocks</p>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">🔧</div>
+                    <h4>Version Control</h4>
+                    <p>Git, GitHub, Collaboration Tools</p>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">📈</div>
+                    <h4>Data Tools</h4>
+                    <p>Power BI, SPSS, Excel, SQL Server</p>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">🎨</div>
+                    <h4>Design Tools</h4>
+                    <p>Figma, Framer, Galileo AI, Uizard</p>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">✍️</div>
+                    <h4>Content Creation</h4>
+                    <p>Grammarly, Quillbot, Hemingway App</p>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">🤝</div>
+                    <h4>Collaboration</h4>
+                    <p>Slack, Teams, Notion, Trello</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Soft Skills Section -->
+        <div class="tools-section" style="margin-top: 40px;">
+            <h2>💡 Soft Skills</h2>
+            <div class="skills-container" style="margin-bottom: 0;">
+                <div class="skill-category">
+                    <div class="category-icon">🤝</div>
+                    <h3>Collaboration & Communication</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Teamwork</span>
+                        <span class="skill-item">Communication</span>
+                        <span class="skill-item">Leadership</span>
+                        <span class="skill-item">Presentation</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="category-icon">🎯</div>
+                    <h3>Problem-Solving & Innovation</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Critical Thinking</span>
+                        <span class="skill-item">Creativity</span>
+                        <span class="skill-item">Analytical Skills</span>
+                        <span class="skill-item">Innovation</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <div class="category-icon">🚀</div>
+                    <h3>Personal Development</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Curiosity</span>
+                        <span class="skill-item">Quick Learner</span>
+                        <span class="skill-item">Adaptability</span>
+                        <span class="skill-item">Commitment</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" onclick="toggleTheme()">
+        <span id="theme-icon">🌓</span>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+    <script>
+        // Animate proficiency bars on load
+        window.addEventListener('load', () => {
+            const bars = document.querySelectorAll('.proficiency-fill');
+            bars.forEach((bar, index) => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, index * 200 + 500);
+            });
+        });
+    </script>
+</body>
+</html>
